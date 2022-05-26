@@ -1,0 +1,115 @@
+@charset "ISO-8859-1";
+body{
+	margin:0%;
+	background-color:white;
+	font-family:"Roboto";
+	font-variant:small-caps;
+	text-transform:uppercase;
+}
+
+.slogan{
+	color:#ebeded;
+	font-size:150%;
+}
+
+.sezione{
+	color:#57A773;
+	font-size:150%;
+}
+
+.sloganDiv{
+	text-align:center;
+	background-color:#57A773;
+	border-bottom:double #ebeded 4px;
+}
+
+.formH{
+	display:flex;
+}
+
+.search{
+	margin:1px 0 0 1px;
+}
+
+.divH{
+	background-color: #57A773;
+	height: 100px;
+	width:100%;
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	border-bottom:solid white 2px;
+}
+
+.labelH{
+	font-family:"Roboto";
+	font-variant:"small-caps";
+}
+
+.inputHMin , .inputHMax, .inputH{
+	height:24px;
+	-moz-border-radius: 8px;
+  	-webkit-border-radius: 8px;
+  	border-radius: 8px;
+}
+
+.logoH{
+	position: absolute;
+	left:20px;
+	top:42px;
+  	object-fit: contain;
+  	height:70px;
+  	width:60px;
+}
+
+.loginH{
+	position:absolute;
+	right:20px;
+	top:50px;
+	width:60px;
+}
+
+/*CSS PER DIMENSIONE <900*/
+@media screen and (max-width: 900px){
+
+.formH{
+	display:block;
+	position:relative;
+	top:15%;
+}
+
+.search{
+	margin:1px 0 0 1px;
+	position:relative;
+	top: -84px;
+	left:100%;
+	width:25px;
+}
+
+.labelH{
+	
+	font-family:"Roboto";
+	font-variant:"small-caps";
+}
+
+.inputHMin{
+	position:relative;
+	left:5%;
+}
+
+.logoH{
+	position: absolute;
+	left:20px;
+	top:42px;
+  	object-fit: contain;
+  	height:70px;
+  	width:60px;
+}
+
+.loginH{
+	position:absolute;
+	right:20px;
+	top:50px;
+	width:60px;
+}
+}

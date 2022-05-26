@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+body{
+	margin:0%;
+	background-color:white;
+	font-family:"Roboto";
+	font-variant:small-caps;
+	text-transform:uppercase;
+}
+
+.divF{
+	text-align:center;
+	background-color: #57A773;
+	height: auto;
+	width:100%;
+}
+
+.where{
+	display:inline;
+	position:relative;
+	left:5%;
+}
+
+.who{
+	display:inline;
+	position:relative;
+	left:-5%;
+}
+
+.social{
+	position:relative;
+	left:34.5%;
+	top:40px;
+}
+
+.title{
+	font-size:large;
+}
+
+.foo{
+	color:#ebeded;
+}

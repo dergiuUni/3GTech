@@ -1,0 +1,333 @@
+@charset "ISO-8859-1";
+
+body{
+	margin:0%;
+	background-color:white;
+	font-family:"Roboto";
+	font-variant:small-caps;
+	text-transform:uppercase;
+}
+
+/* IMMAGINE PRODOTTO */
+
+.parteSopra{
+    height : 600px; 
+    margin:1%;
+    padding:3%;
+    padding-top:1%;
+}
+
+.prodMax{
+	 margin-left: 30px;
+}
+
+.prodotto{
+	float:left;
+    height:400px;
+    width:400px;
+    border-radius: 10px;
+    border-style : solid;
+    border-color : black;
+    border-width : 2 px;
+    margin-left: 45px;
+    margin-top : 20px;
+    padding:3%;
+    padding-top:1%;
+}
+
+.caratteristiche{
+	padding : 3.5%;
+    margin-left : 680px;
+    margin-top : -100px;
+	
+}
+
+.caratteristicheInterno{
+	padding : 2%;
+	margin-left : 55px;
+	
+}
+
+.r{
+	background-color : #eeeeee;
+	width : 300px;
+}
+
+.r1{
+	background-color : #eeeeee;
+	width : 300px;
+	height : 45px;
+	text-align : center;
+}
+
+
+
+.vuoto{
+	background-color : white;
+	border-style : solid;
+	border-color: black;
+	height : 35px;
+	width : 50px;
+}
+
+.vuoto1{
+	background-color : white;
+	width : 38px;
+}
+
+.vuoto2{
+	background-color : white;
+	width : 28px;
+}
+
+.aggiungiCarrello{
+	border-radius : 50px;
+	border-style : solid;
+	border-color : black;
+}
+
+.aggiungiCarrelloButton{
+	border-radius : 50px;
+	border-style : solid;
+}
+
+
+/*TABELLA DESCRIZIONE*/
+
+.descBar{
+	border-top:solid white 2px;
+	border-bottom:solid white 2px;
+	background-color:#8cdb8e;
+	text-align:center;
+}
+
+.descrizione{
+	margin-left : 5%;
+	padding-left : 5%;
+	margin-right : 5%;
+	padding-right : 5%;
+	/*margin-bottom : 5%;
+	padding-bottom : 5%;*/
+}
+
+.areaDesc{
+	border-radius: 10px;
+    border-style : outset;
+    border-color : black;
+    border-width : 1 px;
+}
+
+/* Prodotti */
+
+.containerMax{
+	margin-bottom:33%;
+}
+
+.containerMaxMax{
+	display:block;
+}
+
+.sezioneProdotti{	
+	margin-left : 5%;
+	padding-left : 5%;
+	margin-right : 5%;
+	padding-right : 5%;
+	border-top:solid white 2px;
+	border-bottom:solid white 2px;
+	background-color:#8cdb8e;
+	text-align:center;
+}
+
+.separator{
+	background-color:#57A773;
+	width:100%;
+	height:100%;
+}
+
+.prodottiNuovi {
+	margin-top:1%;
+	margin-bottom:1%;
+	position:absolute;
+	left:2.5%;
+	right:3.5%;
+    display: block;
+    background:linear-gradient(270deg, rgb(210,145,160) , 50%, rgb(170,205,20) );
+    width: 95%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+
+element.style {
+    height: 175.856px;
+    width: 256.781px;
+    left: 241px;
+    top: 321px;
+    display: none;
+}
+
+.product{
+	float:left;
+    background-color: white;
+    height:300px;
+    width:300px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin:3%;
+    padding:3%;
+    padding-top:1%;
+}
+
+
+.TitleProduct{
+    text-align: center;
+    margin-top:0%;
+    margin-bottom:0%;
+    padding-top:2.5%;
+    padding-bottom:1%;
+}
+
+.ImageProduct{
+	color: blu;
+    display:block;
+    margin:2px auto;
+    text-align:center;
+    height:250px;
+    width:250px;
+}
+
+.DivPrezzo{
+    margin-bottom: solid white 2px;
+    margin-left: solid white 2px;
+    margin-right: solid white 2px;
+    background-color: #57A773;
+    height: 30px;
+    font-weight:bold;
+    font-size:150%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.ArticlePrezzo{
+    text-align: center;
+}
+
+.ButtonCarrello{
+    margin-left: auto;
+    margin-right: 0.5%;
+}
+
+/*FORM*/
+
+.invia{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background-color: #4caf50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #000000;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.recensione{
+	margin-left : 5%;
+	margin-rigth: 5%;
+	margin-bottom : 5%;
+	height : 800px;
+}
+
+
+
+.sinistra{
+	float : left;
+	width : 550px;
+	marign-top: 200px;
+	padding-top:100px;
+}
+
+.destra{
+	float : right;
+	width: 800px;
+	height : 600px;
+	margin-right : 5%;
+	marign-top: 50px;
+	padding-top:10px;
+}
+
+.recsx{
+	margin-top: 500px;
+	width: 450px;
+	float: left;
+	background-color : #f2f2f2;
+	box-sizing: border-box;
+    font-size: 14px;
+    border-radius : 20px;
+    font-family: "Roboto", sans-serif;
+	outline: 0;
+    background: #f2f2f2;
+    margin: 0 0 12px;
+    padding: 12px;
+    box-width: 111px;
+    font-size: 14px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    borde-color: black;
+    border-width: 2px;
+}
+
+.recdx{
+	width : 800px;
+	height : 250px;
+	float: right;
+	background-color : #f2f2f2;
+	box-sizing: border-box;
+    font-size: 14px;
+    border-radius : 20px;
+    font-family: "Roboto", sans-serif;
+	outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 12px;
+    font-size: 14px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    borde-color: black;
+    border-width: 2px;
+    resize:none;
+}
+/*TASTO INVIA*/
+
+
+.invia{
+	width: 80px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #4caf50;
+    border: 0;
+    padding: 15px;
+    color: #000000;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+
+
+
