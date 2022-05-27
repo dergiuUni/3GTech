@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>3GTech-Footer</title>
-<link rel=stylesheet href="footer.css">
+<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/footer.css">
 </head>
 <body>
 	<div class=divF>

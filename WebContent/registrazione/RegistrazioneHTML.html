@@ -9,7 +9,7 @@
     <div class=page>
     	<div class="logoLogin"><a href=../index/index.jsp><img src="../images/newLogo.png" alt=logo width=110px></a></div>
         <div class="login-page">
-        	<form action="RegistrazioneServlet" method="post" onSubmit="return validateReg();">
+        	<form action="/3GTech/RegistrazioneServlet" method="post" onSubmit="return validateReg();">
             	<input class=form-input id="nome" name=nome type=text placeholder="Nome" autofocus onKeyUp="onBlurName(this);"/>
         		<input class=form-input id=cognome name=cognome type=text placeholder="Cognome" onKeyUp="onBlurSurname(this);"/>
         		<input class=form-input id=indirizzo name=indirizzo type=text placeholder="Indirizzo (<Via/Piazza/...> <Nome> <Civico>)" onKeyUp="onBlurAddress(this);"/>

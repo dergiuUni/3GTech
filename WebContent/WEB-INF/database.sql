@@ -23,6 +23,7 @@ CREATE TABLE Utente(
     email     VARCHAR(30) NOT NULL,
     password  VARCHAR(20) NOT NULL,
     tipo      ENUM ('user','admin') NOT NULL,
+    indirizzo VARCHAR(30),
 
     PRIMARY KEY (email)
 );

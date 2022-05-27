@@ -1,4 +1,4 @@
-package MODEL;
+package model;
 
 public interface UtenteDAO {
 	public boolean inserisciUtente     (UtenteBean utenteBean);
@@ -9,5 +9,6 @@ public interface UtenteDAO {
 	public boolean modificaTipo        (UtenteBean utenteBean);
 	public boolean isAdmin        	   (UtenteBean utenteBean);
 	public boolean isCliente           (UtenteBean utenteBean);
+	public boolean login               (UtenteBean utenteBean);
 	public void    leggiSingoloUtente  (UtenteBean utenteBean);
 }

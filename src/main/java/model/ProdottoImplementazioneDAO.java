@@ -1,10 +1,10 @@
-package MODEL;
-
-import MODEL.ProdottoBean.categoria;
+package model;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.ProdottoBean.categoria;
 
 public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	private static String username = "UserAzienda2";

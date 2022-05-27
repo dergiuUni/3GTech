@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>3GTech-Header</title>
-<link rel=stylesheet href=header.css>
+<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/header.css">
 </head>
 
 <body>
@@ -27,10 +27,10 @@
                  
                  <input class=search type="image" src="../images//search2.png" alt="Cerca" width=30px>
               </form>
-          <% if(session.getAttribute("admin")==null){ %>    
+          <% if(session.getAttribute("user")==null){ %>    
           	<a href=../login/LoginHTML.html><img class=loginH src=../images/account.png width=50px></a>
           <% }else{ %>
-         	<a href=../Logout><img class=loginH src=../images/account.png width=50px></a>
+         	<a href=/3GTech/LogoutServlet><img class=loginH src=../images/account.png width=50px></a>
          <% } %>
 	</div>
 	</header>

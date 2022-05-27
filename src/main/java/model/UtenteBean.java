@@ -1,10 +1,11 @@
-package MODEL;
+package model;
 
 public class UtenteBean {
 	private String nome;
 	private String cognome;
 	private String email;
 	private String password;
+	private String indirizzo;
     public static enum categoria{
 		user,
 		admin
@@ -53,5 +54,13 @@ public class UtenteBean {
 
 	public void setTipo(categoria tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
 }

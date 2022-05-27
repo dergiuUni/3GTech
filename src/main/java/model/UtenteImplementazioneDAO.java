@@ -1,8 +1,8 @@
-package MODEL;
+package model;
 
 import java.sql.ResultSet;
 
-import MODEL.UtenteBean.categoria;
+import model.UtenteBean.categoria;
 
 public class UtenteImplementazioneDAO implements UtenteDAO{
 	private static String username = "UserAzienda2";
@@ -212,6 +212,43 @@ public class UtenteImplementazioneDAO implements UtenteDAO{
 		}
 		return false;
 	}
+	
+	/**
+     * Passare un'oggetto utente diverso da null e con i seguenti campi inizializzati correttamente:
+     * <ul>
+	     * <li> email
+     * </ul>
+     * 
+     * @param   utente
+     * @return  <ul>
+     * 				<li>{@code true}: l'utente è un cliente registrato del sito e quindi effettua la login
+     *          	<li>{@code false}: l'utente NON è un cliente registrato del sito non fa la login
+     *          </ul>
+     */
+	public boolean login(UtenteBean utenteBean) {
+		Connettore con = new Connettore();
+		ResultSet result;
+		
+		if(utenteBean.getEmail() != null) {
+			try {
+				con.OpenConnection(username, password);
+				result = con.getConnection().createStatement().executeQuery("SELECT * FROM Utente WHERE email ='"+utenteBean.getEmail()+"' AND password='"+utenteBean.getPassword()+"';");
+				if(result.next()) {
+					utenteBean.setTipo(categoria.valueOf(result.getString("tipo")));
+					utenteBean.setNome(result.getString("nome"));
+					utenteBean.setCognome(result.getString("cognome"));
+					return true;
+				}
+				result.close();
+				con.closeConnection();
+				return false;
+			} catch (Exception e) {
+				System.out.print("ERROR login");
+				return false;
+			}	
+		}
+		return false;
+	}
 
 	/**
      * Passare un'oggetto utente diverso da null e con i seguenti campi inizializzati correttamente:
@@ -219,7 +256,7 @@ public class UtenteImplementazioneDAO implements UtenteDAO{
 	     * <li> email
      * </ul>
      * 
-     * @param   ordine
+     * @param   utente
      * @return  void poichè aggiorna tutti i campi dell'oggetto utente che gli viene passato come input
      */
 	@Override

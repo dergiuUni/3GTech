@@ -1,4 +1,4 @@
-package MODEL;
+package model;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 public class Session {
 	HttpSession session;
 	
-	String getUtenteSessionLogin(HttpServletRequest request) {
+	public Session() {}
+	
+	public String getUtenteSessionLogin(HttpServletRequest request) {
 		if(request.getSession(false) == null) {
 			return null;
 		}
@@ -16,10 +18,13 @@ public class Session {
 		}
 	}
 	
-	boolean setUtenteSessionLogin(HttpServletRequest request, UtenteBean utente) {
+	public boolean setUtenteSessionLogin(HttpServletRequest request, UtenteBean utente) {
 		UtenteImplementazioneDAO ut = new UtenteImplementazioneDAO();
 		
+		destroySession(request);
+		
 		if(request.getSession(false) == null) {
+			request.getSession().setMaxInactiveInterval(5*60);
 			if(ut.isAdmin(utente)) {
 				request.getSession(true).setAttribute("utente", "ADMIN");
 				return true;
@@ -37,7 +42,7 @@ public class Session {
 		return false;
 	}
 	
-	boolean isSessionAdmin(HttpServletRequest request) {
+	public boolean isSessionAdmin(HttpServletRequest request) {
 		if(request.getSession(false) == null) {
 			return false;
 		}
@@ -51,7 +56,7 @@ public class Session {
 		}
 	}
 	
-	boolean isSessionCliente(HttpServletRequest request) {
+	public boolean isSessionCliente(HttpServletRequest request) {
 		if(request.getSession(false) == null) {
 			return false;
 		}
@@ -65,7 +70,7 @@ public class Session {
 		}
 	}
 	
-	boolean isSessionOspite(HttpServletRequest request) {
+	public boolean isSessionOspite(HttpServletRequest request) {
 		if(request.getSession(false) == null) {
 			return true;
 		}
@@ -79,8 +84,11 @@ public class Session {
 		}
 	}
 	
-	boolean destroySessio(HttpServletRequest request) {
-		request.getSession(false).removeAttribute("utente");
+	public boolean destroySession(HttpServletRequest request) {
+		if(request.getSession().getAttribute("utente")!=null) {
+			request.getSession(false).removeAttribute("utente");
+		}
+		
 		request.getSession(false).invalidate();
 		
 		if(request.getSession(false) == null) {
