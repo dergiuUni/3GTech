@@ -12,7 +12,7 @@
 	<header>
 	<div class=sloganDiv><label class=slogan><b>3GTech: World of Technology</b></label></div>
 		<div class=divH id=header>
-		<a href=../index/index.jsp><img class=logoH src="../images/newLogo.png"></a>
+		<a href="index"><img class=logoH src="${pageContext.request.contextPath}/images/newLogo.png"></a>
 		  <form class="formH" action="">
                  <input class=inputH id=f1 type="text" placeholder="Cosa stai cercando?" style=width:250px;> 
                   
@@ -25,12 +25,12 @@
                  	<input class=inputHMax id=f5 type="number" id="fname" name="max" style=width:50px; min=0>
                  </div>
                  
-                 <input class=search type="image" src="../images//search2.png" alt="Cerca" width=30px>
+                 <input class=search type="image" src="${pageContext.request.contextPath}/images//search2.png" alt="Cerca" width=30px>
               </form>
-          <% if(session.getAttribute("user")==null){ %>    
-          	<a href=../login/LoginHTML.html><img class=loginH src=../images/account.png width=50px></a>
+          <% if(session.getAttribute("utente")==null){ %>    
+          	<a href=DispatcherLoginServlet><img class=loginH src="${pageContext.request.contextPath}/images/account.png" width=50px></a>
           <% }else{ %>
-         	<a href=/3GTech/LogoutServlet><img class=loginH src=../images/account.png width=50px></a>
+         	<a href="LogoutServlet"><img class=loginH src="${pageContext.request.contextPath}/images/account.png" width=50px></a>
          <% } %>
 	</div>
 	</header>

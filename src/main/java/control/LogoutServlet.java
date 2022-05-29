@@ -21,7 +21,7 @@ public class LogoutServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Session s = new Session();
 		s.destroySession(request);
-		response.sendRedirect("index/index.jsp");
+		request.getRequestDispatcher("/index").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

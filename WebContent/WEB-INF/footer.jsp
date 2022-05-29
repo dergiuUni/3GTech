@@ -23,9 +23,9 @@
 		</div>
 	
 		<label class=social>Seguici sui social<br>
-		<img src=../images/fb.png width=35px>
-		<img src=../images/ig.png width=35px>
-		<img src=../images/tg.png width=35px></label>
+		<img src="${pageContext.request.contextPath}/images/fb.png" width=35px>
+		<img src="${pageContext.request.contextPath}/images/ig.png" width=35px>
+		<img src="${pageContext.request.contextPath}/images/tg.png" width=35px></label>
 	
 		<br><br><label>&copy; 2022 - 3GTech</label>
 	</div>

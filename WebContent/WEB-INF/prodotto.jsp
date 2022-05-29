@@ -7,13 +7,13 @@
 
 	<meta charset="ISO-8859-1">
 	<title>3GTech-Product Page</title>
-	<link rel=stylesheet href=prodotto.css>
-	<link rel=stylesheet href=max1497px.css>
-	<link rel=stylesheet href=max1101px.css>
-	<link rel=stylesheet href=max864px.css>
-	<link rel=stylesheet href="../header_footer/header.css">
-	<link rel=stylesheet href="../header_footer/navbar.css">
-	<link rel=stylesheet href="../header_footer/footer.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/prodotto.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1497px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1101px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max864px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/header.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/navbar.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/footer.css">
 	
 	<style type="text/css">
 #STAR_RATING ul
@@ -103,8 +103,8 @@ function star(QT)
 </head>
 
 <body>
-	<%@include file="../header_footer/header.jsp" %>
-	<%@include file="../header_footer/navbar.jsp" %>
+	<%@include file="header.jsp" %>
+	<%@include file="navbar.jsp" %>
 	
 	<div class=containerMaxMax>
 	
@@ -257,7 +257,7 @@ function star(QT)
 						<div class="product">
 						<h2 class="TitleProduct">Nome Prodotto</h2><hr>
 						<!-- ESEMPIO PRODOTTO-->
-						<img src="../images/macbook.jpg" class="ImageProduct">
+						<img src="${pageContext.request.contextPath}/imageProdotto/1/1.jpg" class="ImageProduct">
 						<div class="DivPrezzo">
 							<article class="ArticlePrezzo">X.Y$</article>
 						</div>
@@ -268,7 +268,7 @@ function star(QT)
 		
 	</div>
 	
-	<%@include file="../header_footer/footer.jsp" %>
+	<%@include file="footer.jsp" %>
 </body>
 
 </html>

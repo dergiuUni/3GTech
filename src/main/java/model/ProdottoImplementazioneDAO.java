@@ -205,6 +205,25 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		return false;
 	}
 	
+	public int quantitàProdotti() {
+		Connettore con = new Connettore();
+		ResultSet result;
+		try {
+			con.OpenConnection(username, password);
+			result = con.getConnection().createStatement().executeQuery("SELECT COUNT(codice) AS total FROM Prodotto");
+			result.next();
+			int quantita = result.getInt("total");
+			result.close();
+			con.closeConnection();
+			return quantita;
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+		}
+		return 0;
+	}
+	
 	/**
      * Passare un'oggetto prodotto diverso da null e con i seguenti campi inizializzati correttamente:
      * <ul>
@@ -278,6 +297,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	 * 		<li>modificaTipo 
 	 * 		<li>modificaQuantità
 	 * 		<li>decrementaQuantità
+	 *      <li>quantitàProdotti
 	 * 		<li>leggiSingoloProdotto
 	 * 		<li>leggiProdotto
 	 * 		<li>elencoFunzioni

@@ -2,14 +2,14 @@
 <html>
     <head>
     	<title>Registrazione</title>
-        <link rel="stylesheet" href="LoginCSS.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/registrazione/LoginCSS.css">
     </head>
 	
     <body>
     <div class=page>
-    	<div class="logoLogin"><a href=../index/index.jsp><img src="../images/newLogo.png" alt=logo width=110px></a></div>
+    	<div class="logoLogin"><a href="index"><img src="${pageContext.request.contextPath}/images/newLogo.png" alt=logo width=110px></a></div>
         <div class="login-page">
-        	<form action="/3GTech/RegistrazioneServlet" method="post" onSubmit="return validateReg();">
+        	<form action="RegistrazioneServlet" method="post" onSubmit="return validateReg();">
             	<input class=form-input id="nome" name=nome type=text placeholder="Nome" autofocus onKeyUp="onBlurName(this);"/>
         		<input class=form-input id=cognome name=cognome type=text placeholder="Cognome" onKeyUp="onBlurSurname(this);"/>
         		<input class=form-input id=indirizzo name=indirizzo type=text placeholder="Indirizzo (<Via/Piazza/...> <Nome> <Civico>)" onKeyUp="onBlurAddress(this);"/>
@@ -22,13 +22,13 @@
                 	<span id=strong></span>
                 </div>
                 <input class=submit type=submit value=Registrati>
-                <p class="message">Sei già registrato? <a href="../login/LoginHTML.html">Accedi</a></p>
+                <p class="message">Sei giï¿½ registrato? <a href="DispatcherLoginServlet">Accedi</a></p>
             </form>
             <p id=error></p>
         </div>
      </div>
      
-     <script src=registrazione.js></script>
+     <script src="${pageContext.request.contextPath}/registrazione/registrazione.js"></script>
      <script>
      	function onBlurName(x){
      		if(validateName()) x.style.background="lightGreen";

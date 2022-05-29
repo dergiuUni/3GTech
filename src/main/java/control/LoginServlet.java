@@ -34,9 +34,11 @@ public class LoginServlet extends HttpServlet {
 		
 		if(op.login(user)) {
 			s.setUtenteSessionLogin(request,user);
-			response.sendRedirect("index/index.jsp");
+			request.getRequestDispatcher("/index").forward(request, response);
 		}
-		else response.sendRedirect("login/LoginHTML.html");
+		else {
+			request.getRequestDispatcher("/DispatcherLoginServlet").forward(request, response);
+		}
 	}
 
 }
