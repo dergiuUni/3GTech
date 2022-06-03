@@ -205,7 +205,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		return false;
 	}
 	
-	public int quantit√†Prodotti() {
+	public int quantit‡Prodotti() {
 		Connettore con = new Connettore();
 		ResultSet result;
 		try {

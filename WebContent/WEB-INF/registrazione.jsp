@@ -12,7 +12,7 @@
         	<form action="RegistrazioneServlet" method="post" onSubmit="return validateReg();">
             	<input class=form-input id="nome" name=nome type=text placeholder="Nome" autofocus onKeyUp="onBlurName(this);"/>
         		<input class=form-input id=cognome name=cognome type=text placeholder="Cognome" onKeyUp="onBlurSurname(this);"/>
-        		<input class=form-input id=indirizzo name=indirizzo type=text placeholder="Indirizzo (<Via/Piazza/...> <Nome> <Civico>)" onKeyUp="onBlurAddress(this);"/>
+        		<input class=form-input id=indirizzo name=indirizzo type=text placeholder="Indirizzo (&ltVia/Piazza/...&gt &ltNome&gt &ltCivico&gt)" onKeyUp="onBlurAddress(this);"/>
         		<input class=form-input id=telefono name=telefono type=text placeholder="Telefono (10 cifre)" onKeyUp="onBlurPhone(this);"/>
             	<input class=form-input id=email name=email type=text placeholder="E-mail (es. 3GTech@studenti.unisa.it)" onKeyUp="onBlurEmail(this);"/>
                 <input class=form-input id=password name=password type="password" placeholder="Password (Almeno 8 caratteri)" onKeyUp="onBlurPassword(this);"/>
@@ -22,7 +22,7 @@
                 	<span id=strong></span>
                 </div>
                 <input class=submit type=submit value=Registrati>
-                <p class="message">Sei giï¿½ registrato? <a href="DispatcherLoginServlet">Accedi</a></p>
+                <p class="message">Sei già registrato? <a href="DispatcherLoginServlet">Accedi</a></p>
             </form>
             <p id=error></p>
         </div>

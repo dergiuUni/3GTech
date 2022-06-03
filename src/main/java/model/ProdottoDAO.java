@@ -12,7 +12,7 @@ public interface ProdottoDAO {
 	public boolean    	  modificaTipo         (ProdottoBean prodottoBean); 
 	public boolean        modificaQuantita     (ProdottoBean prodottoBean); 
 	public boolean        decrementaQuantita   (ProdottoBean prodottoBean);
-	public int            quantit√†Prodotti     ();
+	public int            quantit‡Prodotti     ();
 	public void           leggiSingoloProdotto (ProdottoBean prodottoBean);
 	public List<ProdottoBean> leggiProdotto    ();
 	public void elencoFunzioni();

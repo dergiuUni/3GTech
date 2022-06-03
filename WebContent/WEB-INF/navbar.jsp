@@ -18,10 +18,6 @@
 	    	<li><a href="">Console</a></li>
 	    	<li><a href="">Videogames</a></li>
 	    	<li><a href="">Elettrodomestici</a></li>
-	    	<% Session s=new Session();
-	    		if(s.isSessionAdmin(request)){%>
-	    				<li><a href="">Gestisci Catalogo</a></li>
-	    			<%} %>
 		</ul></nav>
 		</div>
 </body>

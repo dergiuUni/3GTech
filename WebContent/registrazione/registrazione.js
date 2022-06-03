@@ -58,7 +58,7 @@ function validateReg(){
 		return false;
 	}
 	
-	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ [A-z0-9]+$/))){
+	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ \d{3}$/))){
 		var errore=document.getElementById("error");
 		css(errore);
 		errore.style.height="40px";
@@ -151,7 +151,7 @@ function validateAddress(){
 		return false;
 	}
 	
-	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ [A-z0-9]+$/))){
+	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ \d{1,3}$/))){
 		console.log("Sono caduto in errore indirizzo2");
 		return false;
 	}
@@ -193,7 +193,6 @@ function validatePassword(){
 	}
 	
 	if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(password.value)==false){
-		var errore=document.getElementById("error");
 		console.log("Sono caduto in errore 3");
 		return 0;
 	}
