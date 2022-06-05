@@ -19,7 +19,7 @@ body{
 	top:100px;
 	padding:3px;
 	border: solid 2px #384d54;
-	background-color:#ebeded;
+	background-color:white;
 	-moz-border-radius: 8px;
   	-webkit-border-radius: 8px;
   	border-radius: 8px;
@@ -28,6 +28,7 @@ body{
   	font-size:13px;
   	width:165px;
   	user-select: none;
+  	color:#57A773
 }
 
 .slogan{

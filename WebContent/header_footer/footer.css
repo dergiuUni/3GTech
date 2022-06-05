@@ -14,16 +14,25 @@ body{
 	width:100%;
 }
 
+.divF{
+	text-align:center;
+	background-color: #57A773;
+	height: auto;
+	width:100%;
+	border-radius:180px 180px 0 0;
+}
+
 .where{
 	display:inline;
 	position:relative;
-	left:5%;
+	
+	top:35px;
 }
 
 .who{
 	display:inline;
 	position:relative;
-	left:-5%;
+	top:35px;
 }
 
 .social{
@@ -33,7 +42,11 @@ body{
 }
 
 .title{
-	font-size:large;
+	font-size:17px;
+}
+
+hr{
+	width:90%;
 }
 
 .foo{

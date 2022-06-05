@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class=divF>
-		<div class=divF>
+		<div class=mydivF>
 			<table class=who>
 				<tr><td class=title width=200px>Chi siamo<hr></td></tr>
 				<tr><td><a class=foo href="">Cos'è 3GTech<br><br></a></td>
@@ -17,7 +17,7 @@
 			</table>
 	
 			<table class=where>
-				<tr><td class=title width=200px>Dove puoi trovarci<hr></td></tr>
+				<tr><td class=title width=200px>Dove ci troviamo<hr></td></tr>
 				<tr><td><a class=foo href="">Le nostre sedi</a></td></tr>
 			</table>
 		</div>

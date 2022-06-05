@@ -57,7 +57,7 @@
 	    		<%}else{ %>
 	    				<tr><td><a class=menuA href="">Carrello</a></td></tr>
 	    		<% } %>
-          		<tr><td><a class=menuA href="">Impostazioni</a></td></tr>
+          		<tr><td><a class=menuA href="DispatcherImpostazioni">Impostazioni</a></td></tr>
           		<tr><td><a class=menuA href=LogoutServlet>Logout</a></td></tr>
           	</table>
           </div>

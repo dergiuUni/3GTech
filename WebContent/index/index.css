@@ -10,7 +10,7 @@ body{
 /* Prodotti */
 
 .containerMax{
-	margin-bottom:33%;
+	margin-bottom:35%;
 }
 
 .containerMaxMax{
@@ -36,9 +36,12 @@ body{
 	position:absolute;
 	left:2.5%;
 	right:3.5%;
-    display: block;
-    background:linear-gradient(270deg, rgb(210,145,160) , 50%, rgb(170,205,20) );
+	align-items:center;
+    background-image:url("../images/sfondoIndex.jpg");
+  	background-size:cover;
     width: 95%;
+    display:flex;
+	justify-content:space-between;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
@@ -48,11 +51,205 @@ body{
 	float:left;
     background-color: white;
     height:300px;
-    width:300px;
+    width:250px;
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
     margin:3%;
+    padding:3%;
+    padding-top:1%;
+    border: solid 2px #384d54;
+}
+
+
+.TitleProduct{
+    text-align: center;
+    margin-top:0%;
+    margin-bottom:0%;
+    padding-top:2.5%;
+    padding-bottom:1%;
+}
+
+.ImageProduct{
+    display:block;
+    margin:0px auto;
+    text-align:center;
+    height:220px;
+    width:220px;
+}
+
+.DivPrezzo{
+    background-color: #57A773;
+    height: 30px;
+    font-weight:bold;
+    font-size:150%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin-top:20px;
+}
+
+.ArticlePrezzo{
+    text-align: center;
+}
+
+@media screen and (max-width: 1250px){
+	
+.prodottiNuovi {
+	margin-top:1%;
+	margin-bottom:1%;
+	position:absolute;
+	left:2.5%;
+	right:3.5%;
+    width: 95%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.containerMax{
+		margin-bottom:35%;
+	}
+	
+	.product{
+		float:left;
+    	background-color: white;
+    	height:225px;
+   		width:200px;
+   	 	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	margin:3%;
+    	padding:3%;
+    	padding-top:1%;
+	}
+	
+	.TitleProduct{
+    	text-align: center;
+    	margin-top:0%;
+    	margin-bottom:0%;
+    	padding-top:2.5%;
+    	padding-bottom:1%;
+    	font-size:17px;
+	}	
+
+	.ImageProduct{
+    	display:block;
+    	margin:0px auto;
+    	text-align:center;
+    	height:160px;
+    	width:160px;
+	}
+
+	.DivPrezzo{
+    	background-color: #57A773;
+    	height: 23px;
+    	font-weight:bold;
+    	font-size:100%;
+    	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	position:relative;
+    	top:-6px;
+	}	
+}
+
+@media screen and (max-width: 950px){
+	
+.prodottiNuovi {
+	margin-top:1%;
+	margin-bottom:1%;
+	position:absolute;
+	left:2.5%;
+	right:3.5%;
+    width: 95%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.containerMax{
+		margin-bottom:37%;
+	}
+	
+	.product{
+		float:left;
+    	background-color: white;
+    	height:190px;
+   		width:160px;
+   	 	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	margin:3%;
+    	padding:3%;
+    	padding-top:1%;
+	}
+	
+	.TitleProduct{
+    	text-align: center;
+    	margin-top:0%;
+    	margin-bottom:0%;
+    	padding-top:2.5%;
+    	padding-bottom:1%;
+    	font-size:14px;
+	}	
+
+	.ImageProduct{
+    	display:block;
+    	margin:0px auto;
+    	text-align:center;
+    	height:140px;
+    	width:140px;
+	}
+
+	.DivPrezzo{
+    	
+    	background-color: #57A773;
+    	height: 20px;
+    	width:120px;
+    	font-weight:bold;
+    	font-size:100%;
+    	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	position:relative;
+    	left:20px;
+    	top:-13px;
+	}	
+}
+
+@media screen and (max-width: 800px){
+	
+	.prodottiNuovi {
+		margin-top:1%;
+		margin-bottom:1%;
+		position:absolute;
+		left:2.5%;
+		right:3.5%;
+    	width: 95%;
+    	height:1000px;
+    	-moz-border-radius: 50px;
+    	-webkit-border-radius: 50px;
+    	border-radius: 50px;
+    	display: flex;
+    	justify-content: center; 
+    	flex-direction: column; 
+    	align-items: center;
+	}
+
+	.containerMax{
+		margin-bottom:220%;
+	}
+	
+	.product{
+    background-color: white;
+    height:300px;
+    width:250px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin:auto;
+    position:relative;
     padding:3%;
     padding-top:1%;
 }
@@ -70,14 +267,11 @@ body{
     display:block;
     margin:0px auto;
     text-align:center;
-    height:250px;
-    width:250px;
+    height:220px;
+    width:220px;
 }
 
 .DivPrezzo{
-    margin-bottom: solid white 2px;
-    margin-left: solid white 2px;
-    margin-right: solid white 2px;
     background-color: #57A773;
     height: 30px;
     font-weight:bold;
@@ -85,13 +279,8 @@ body{
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
+    margin-top:20px;
+    position:relative;
+    left:63px;
 }
-
-.ArticlePrezzo{
-    text-align: center;
-}
-
-.ButtonCarrello{
-    margin-left: auto;
-    margin-right: 0.5%;
 }
