@@ -1,11 +1,16 @@
 package model;
 
-public class ProdottoBean {
+import java.io.Serializable;
+import java.sql.Date;
+
+public class ProdottoBean implements Serializable{
 	private short codice;
     private String nome;
     private String descrizione;
     private double prezzo;  
-    private int quantita;
+    private int quantitaDB;
+    private int quantitaCarrello;
+    private Date inserimento;
     public static enum categoria{
     	Videogame,
     	Console,
@@ -19,16 +24,24 @@ public class ProdottoBean {
 		// TODO Auto-generated constructor stub
 	}
     
-    public ProdottoBean(String nome, String descrizione, double prezzo, categoria tipo, int quantita) {
+    public ProdottoBean(String nome, String descrizione, double prezzo, categoria tipo, int quantitaDB, Date inserimento) {
     	this.nome = nome;
     	this.descrizione = descrizione;
     	this.prezzo = prezzo;
     	this.tipo = tipo;
-    	this.quantita = quantita;
+    	this.quantitaDB = quantitaDB;
+    	this.inserimento = inserimento;
+    }
+    
+    public ProdottoBean(String nome, String descrizione, double prezzo, categoria tipo, Date inserimento) {
+    	this.nome = nome;
+    	this.descrizione = descrizione;
+    	this.prezzo = prezzo;
+    	this.tipo = tipo;
+    	this.inserimento = inserimento;
     }
     
     public short getCodice() {
-    	
 		return codice;
 	}
 	public void setCodice(short codice) {
@@ -59,11 +72,27 @@ public class ProdottoBean {
 		this.tipo = tipo;
 	}
 
-	public int getQuantita() {
-		return quantita;
+	public Date getInserimento() {
+		return inserimento;
 	}
 
-	public void setQuantita(int quantita) {
-		this.quantita = quantita;
+	public void setInserimento(Date inserimento) {
+		this.inserimento = inserimento;
+	}
+
+	public int getQuantitaDB() {
+		return quantitaDB;
+	}
+
+	public void setQuantitaDB(int quantitaDB) {
+		this.quantitaDB = quantitaDB;
+	}
+
+	public int getQuantitaCarrello() {
+		return quantitaCarrello;
+	}
+
+	public void setQuantitaCarrello(int quantitaCarrello) {
+		this.quantitaCarrello = quantitaCarrello;
 	}
 }

@@ -1,6 +1,8 @@
 package model;
 
-public class UtenteBean {
+import java.io.Serializable;
+
+public class UtenteBean implements Serializable{
 	private String nome;
 	private String cognome;
 	private String email;

@@ -2,6 +2,8 @@
 
 import java.util.List;
 
+import org.json.JSONArray;
+
 public interface ProdottoDAO {
 	
 	public boolean        inserisciProdotto    (ProdottoBean prodottoBean);
@@ -12,9 +14,11 @@ public interface ProdottoDAO {
 	public boolean    	  modificaTipo         (ProdottoBean prodottoBean); 
 	public boolean        modificaQuantita     (ProdottoBean prodottoBean); 
 	public boolean        decrementaQuantita   (ProdottoBean prodottoBean);
-	public int            quantit‡Prodotti     ();
+	public int            quantit√†Prodotti     ();
 	public void           leggiSingoloProdotto (ProdottoBean prodottoBean);
-	public List<ProdottoBean> leggiProdotto    ();
+	public JSONArray leggiProdotto    ();
+	public JSONArray utimiInseriti    ();
+	public JSONArray random           ();
 	public void elencoFunzioni();
 
 }

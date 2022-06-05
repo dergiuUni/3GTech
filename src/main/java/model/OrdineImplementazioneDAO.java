@@ -6,6 +6,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+
+import com.google.gson.Gson;
+
 public class OrdineImplementazioneDAO implements OrdineDAO{
 	private static String username = "UserAzienda2";
 	private static String password = "user";
@@ -156,8 +160,9 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
      * @return  arraylist composto da oggetti ordini i quali sono tutti gli acquisti che ha effettuato un determinato utente(quello che viene passato come input) PS:il campo prodotto viene formatta solo con il codice, per sapere altri dettagli chiamare la funzione propria 
      */
 	@Override
-	public List<OrdineBean> leggiOrdine(UtenteBean utente) {
-		List<OrdineBean> pr = new ArrayList<OrdineBean>();
+	public JSONArray leggiOrdine(UtenteBean utente) {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
 		Connettore con = new Connettore();
 		
 		try {
@@ -182,11 +187,11 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 			    ut.setEmail(result.getString("utente"));
 			    ordine.setUtente(ut);
 			    ordine.setIndirizzo(result.getString("indirizzoSpedizione"));
-				pr.add(ordine);
+				array.put(gson.toJson(ordine));
 			}
 			result.close();
 			con.closeConnection();
-			return pr;
+			return array;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.print("error dao implementazione");

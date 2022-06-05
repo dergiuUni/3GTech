@@ -14,7 +14,7 @@ public class Session {
 			return null;
 		}
 		else {
-			return (String)request.getSession().getAttribute("utente");
+			return (String)request.getSession(false).getAttribute("utente");
 		}
 	}
 	
@@ -31,11 +31,11 @@ public class Session {
 			}
 			else {
 				if(ut.isCliente(utente)) {
-					request.getSession().setAttribute("utente", "CLIENTE");
+					request.getSession(true).setAttribute("utente", "CLIENTE");
 					return true;
 				}
 				else {
-					request.getSession().setAttribute("utente", "OSPITE");
+					request.getSession(true).setAttribute("utente", "OSPITE");
 				}
 			}
 		}
@@ -47,7 +47,7 @@ public class Session {
 			return false;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "ADMIN") {
+			if (request.getSession(false).getAttribute("utente") == "ADMIN") {
 				return true;
 			}
 			else {
@@ -61,7 +61,7 @@ public class Session {
 			return false;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "CLIENTE") {
+			if (request.getSession(false).getAttribute("utente") == "CLIENTE") {
 				return false;
 			}
 			else {
@@ -75,7 +75,7 @@ public class Session {
 			return true;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "OSPITE") {
+			if (request.getSession(false).getAttribute("utente") == "OSPITE") {
 				return false;
 			}
 			else {
@@ -84,8 +84,40 @@ public class Session {
 		}
 	}
 	
+	public boolean azzeraCarrello(HttpServletRequest request) {
+		if(isSessionCliente(request) == true) {
+			request.getSession().removeAttribute("carrello");
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean inserisciCarrello(HttpServletRequest request, String carrello) {
+		azzeraCarrello(request);
+		if(isSessionCliente(request) == true) {
+			request.getSession(true).setAttribute("carrello", carrello);
+			return true;
+		}
+		return false;
+	}
+	
+	public String leggiCarrello(HttpServletRequest request) {
+		if(isSessionCliente(request) == true) {
+			return (String) request.getSession(false).getAttribute("carrello");
+		}
+		return null;
+	}
+	
+	public boolean isInizializzatoCarrello(HttpServletRequest request) {
+		if(request.getSession(false).getAttribute("carrello") != null) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean destroySession(HttpServletRequest request) {
-		if(request.getSession().getAttribute("utente")!=null) {
+		if(request.getSession(false).getAttribute("utente")!=null) {
+			request.getSession(false).removeAttribute("carrello");
 			request.getSession(false).removeAttribute("utente");
 		}
 		

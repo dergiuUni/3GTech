@@ -1,6 +1,8 @@
 package model;
 
-public class RecensioneBEAN {
+import java.io.Serializable;
+
+public class RecensioneBEAN implements Serializable{
 	private int id;
 	private String testo;
 	private UtenteBean utente;

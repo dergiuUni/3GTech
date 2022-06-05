@@ -1,6 +1,8 @@
 package model;
 
-public class TelefonoBEAN {
+import java.io.Serializable;
+
+public class TelefonoBEAN implements Serializable {
 	private String numero;
 	private UtenteBean utente;
 	

@@ -1,31 +1,25 @@
 package control;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-import model.ProdottoBean;
-import model.ProdottoImplementazioneDAO;
+import model.GestioneCarrello;
 
 /**
- * Servlet implementation class DispatcherProdottoServlet
+ * Servlet implementation class AjaxCarrelloServlet
  */
-@WebServlet("/DispatcherProdottoServlet")
-public class DispatcherProdottoServlet extends HttpServlet {
+@WebServlet("/AjaxAggiungiAlCarrelloServlet")
+public class AjaxAggiungiAlCarrelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DispatcherProdottoServlet() {
+    public AjaxAggiungiAlCarrelloServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,14 +28,9 @@ public class DispatcherProdottoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//mi serve il codice del prodotto cosi riaccedo al db per ricavare le info da passare alla jsp
-		Gson gson = new Gson();
-		ProdottoBean prodotto = new ProdottoBean();
-		ProdottoImplementazioneDAO primpl = new ProdottoImplementazioneDAO();
-		prodotto.setCodice(Short.valueOf((String)request.getSession().getAttribute("codiceProdottoScelto")));
-		primpl.leggiSingoloProdotto(prodotto);
-		request.setAttribute("valoriProdotto", gson.toJson(prodotto));
-		request.getRequestDispatcher("WEB-INF/prodotto.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		GestioneCarrello carrello = new GestioneCarrello();
+		carrello.incrementaUnoQuantita(request, (short)request.getAttribute("codice"));
 	}
 
 	/**

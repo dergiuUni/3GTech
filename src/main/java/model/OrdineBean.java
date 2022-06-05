@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
-public class OrdineBean {
+public class OrdineBean implements Serializable{
 	private int id;
 	private Date dataOrdine;
 	private Date dataConsegna;

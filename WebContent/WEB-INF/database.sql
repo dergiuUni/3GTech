@@ -13,7 +13,8 @@ CREATE TABLE Prodotto(
     descrizione VARCHAR(300) NOT NULL,
     prezzo      DOUBLE NOT NULL,
     quantita    INT NOT NULL,
-
+	inserimento DATE,
+	
     PRIMARY KEY (codice)
 );
 

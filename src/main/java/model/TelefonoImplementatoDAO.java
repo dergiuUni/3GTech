@@ -6,6 +6,13 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.GapContent;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.google.gson.Gson;
+
 public class TelefonoImplementatoDAO implements TelefonoDAO{
 	private static String username = "UserAzienda2";
 	private static String password = "user";
@@ -62,8 +69,9 @@ public class TelefonoImplementatoDAO implements TelefonoDAO{
      * @return  lista di tutti i gli oggetti telefono con il campo numero inizializzato di un determinato utente(passato in input)
      */
 	@Override
-	public List<TelefonoBEAN> leggiTelefono(UtenteBean utente) {
-		List<TelefonoBEAN> pr = new ArrayList<TelefonoBEAN>();
+	public JSONArray leggiTelefono(UtenteBean utente) {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
 		Connettore con = new Connettore();
 		
 		try {
@@ -73,11 +81,11 @@ public class TelefonoImplementatoDAO implements TelefonoDAO{
 
 			while (result.next()) {
 				TelefonoBEAN p = new TelefonoBEAN(result.getString("numero"));
-				pr.add(p);
+				array.put(gson.toJson(p));
 			}
 			result.close();
 			con.closeConnection();
-			return pr;
+			return array;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.print("error dao implementazione");

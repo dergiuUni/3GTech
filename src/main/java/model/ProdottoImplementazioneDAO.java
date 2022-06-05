@@ -4,6 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+
+import com.google.gson.Gson;
+
 import model.ProdottoBean.categoria;
 
 public class ProdottoImplementazioneDAO implements ProdottoDAO {
@@ -19,6 +23,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	     * <li> descrizione
 	     * <li> prezzo
 	     * <li> quantità
+	     * <li> dataInserimento
      * </ul>
      * 
      * @param   prodotto
@@ -30,8 +35,8 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	@Override
 	public boolean inserisciProdotto(ProdottoBean prodottoBean) {
 		Query q = new Query();
-		if(prodottoBean.getCodice() != 0 && prodottoBean.getNome() != null && prodottoBean.getNome().length() <= 100 && prodottoBean.getTipo() != null && prodottoBean.getDescrizione() != null && prodottoBean.getDescrizione().length() <= 300 && prodottoBean.getPrezzo() != 0 && prodottoBean.getQuantita() != 0) {
-			return q.updateQuery("INSERT INTO Prodotto (nome, tipo, descrizione, prezzo, quantita) VALUES ('" + prodottoBean.getNome() + "','" + String.valueOf(prodottoBean.getTipo()) + "','" + prodottoBean.getDescrizione() + "'," + prodottoBean.getPrezzo() + "," + prodottoBean.getQuantita() + ")", username, password);
+		if(prodottoBean.getCodice() != 0 && prodottoBean.getNome() != null && prodottoBean.getNome().length() <= 100 && prodottoBean.getTipo() != null && prodottoBean.getDescrizione() != null && prodottoBean.getDescrizione().length() <= 300 && prodottoBean.getPrezzo() != 0 && prodottoBean.getQuantitaDB() != 0 && prodottoBean.getInserimento() != null) {
+			return q.updateQuery("INSERT INTO Prodotto (nome, tipo, descrizione, prezzo, quantita, inserimento) VALUES ('" + prodottoBean.getNome() + "','" + String.valueOf(prodottoBean.getTipo()) + "','" + prodottoBean.getDescrizione() + "'," + prodottoBean.getPrezzo() + "," + prodottoBean.getQuantitaDB() + ",'" + prodottoBean.getInserimento() + "')", username, password);
 		}
 		return false;
 	}
@@ -161,8 +166,8 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	@Override
 	public boolean modificaQuantita(ProdottoBean prodottoBean) {
 		Query q = new Query();
-		if(prodottoBean.getCodice() != 0 && prodottoBean.getQuantita() != 0 ) {
-			return q.controlloAndUpdateQueryProdotto(prodottoBean.getCodice(), "UPDATE Prodotto SET quantita = " + prodottoBean.getQuantita() + " WHERE codice = " + prodottoBean.getCodice(), username, password);
+		if(prodottoBean.getCodice() != 0 && prodottoBean.getQuantitaDB() != 0 ) {
+			return q.controlloAndUpdateQueryProdotto(prodottoBean.getCodice(), "UPDATE Prodotto SET quantita = " + prodottoBean.getQuantitaDB() + " WHERE codice = " + prodottoBean.getCodice(), username, password);
 		}
 		return false;
 	}
@@ -190,22 +195,22 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 				con.OpenConnection(username, password);
 				result = con.getConnection().createStatement().executeQuery("SELECT quantita FROM Prodotto WHERE codice = " + prodottoBean.getCodice());
 				result.next();
-				prodottoBean.setQuantita(result.getInt("quantita"));
+				prodottoBean.setQuantitaDB(result.getInt("quantita"));
 				result.close();
 				con.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.print("error dao implementazione");
 			}
-			if(prodottoBean.getQuantita() > 0) {
-				prodottoBean.setQuantita(prodottoBean.getQuantita() - 1);
-				return q.updateQuery("UPDATE Prodotto SET quantita = " + prodottoBean.getQuantita() + " WHERE codice = " + prodottoBean.getCodice(), username, password);
+			if(prodottoBean.getQuantitaDB() > 0) {
+				prodottoBean.setQuantitaDB(prodottoBean.getQuantitaDB() - 1);
+				return q.updateQuery("UPDATE Prodotto SET quantita = " + prodottoBean.getQuantitaDB() + " WHERE codice = " + prodottoBean.getCodice(), username, password);
 			}
 		}
 		return false;
 	}
 	
-	public int quantit�Prodotti() {
+	public int quantitàProdotti() {
 		Connettore con = new Connettore();
 		ResultSet result;
 		try {
@@ -242,11 +247,13 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 				con.OpenConnection(username, password);
 				result = con.getConnection().createStatement().executeQuery("SELECT * FROM Prodotto WHERE codice = " + prodottoBean.getCodice());
 				result.next();
+				
 				prodottoBean.setNome(result.getString("nome"));
 				prodottoBean.setDescrizione(result.getString("descrizione"));
 				prodottoBean.setPrezzo(result.getDouble("prezzo"));
 				prodottoBean.setTipo(categoria.valueOf(result.getString("tipo")));
-				prodottoBean.setQuantita(result.getInt("quantita"));
+				prodottoBean.setQuantitaDB(result.getInt("quantita"));
+				prodottoBean.setInserimento(result.getDate("inserimento"));
 				result.close();
 				con.closeConnection();
 			} catch (SQLException e) {
@@ -261,8 +268,9 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
      * @return  arraylist composto da oggetti prodotto con tutti i campi inizializzati 
      */
 	@Override
-	public List<ProdottoBean> leggiProdotto() {
-		List<ProdottoBean> pr = new ArrayList<ProdottoBean>();
+	public JSONArray leggiProdotto() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
 		Connettore con = new Connettore();
 		
 		try {
@@ -271,13 +279,13 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ");
 
 			while (result.next()) {
-				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"));
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")),result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
-				pr.add(p);
+				array.put(gson.toJson(p));
 			}
 			result.close();
 			con.closeConnection();
-			return pr;
+			return array;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.out.print("error dao implementazione");
@@ -285,6 +293,62 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		}
 		return null;
 	}
+	
+	@Override
+	public JSONArray utimiInseriti() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 10 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public JSONArray random() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 20");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
 	
 	/**
 	 * Elenco di tutte le funzioni di questa classe. 
