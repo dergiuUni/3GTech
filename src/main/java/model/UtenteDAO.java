@@ -11,4 +11,6 @@ public interface UtenteDAO {
 	public boolean isCliente           (UtenteBean utenteBean);
 	public boolean login               (UtenteBean utenteBean);
 	public void    leggiSingoloUtente  (UtenteBean utenteBean);
+	public boolean modificaIndirizzo   (UtenteBean utenteBean);
+	public boolean modificaEmail       (UtenteBean utenteBean);
 }

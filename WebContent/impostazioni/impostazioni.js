@@ -12,6 +12,13 @@ $(function(){
 		});
 })
 
+$(function(){
+	$('#optIndirizzo').click(
+		function(){
+		$('#indirizzo').slideToggle('slow');
+		});
+})
+
 function validateEmail(){
 	var email=document.getElementById("newEmail");
 	var errore=document.getElementById("errorEmail")
@@ -46,6 +53,24 @@ function validatePassword(){
 		console.log("Sono caduto in errore 3");
 		return false;
 	}
+}
+
+function validateIndirizzo(){
+	var indirizzo=document.getElementById("newIndirizzo");
+	var errore=document.getElementById("errorIndirizzo");
+	
+	if(indirizzo.value.length==0){
+		css(errore);
+		errore.innerHTML="<b>ERRORE:</b>Inserisci indirizzo!";
+		return false;
+	}
+	
+	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ \d{1,3}$/))){
+		css(errore);
+		errore.innerHTML="<b>ERRORE:</b>Inserisci indirizzo valido!";
+		return false;
+	}
+	return true;
 }
 
 function css(errore){

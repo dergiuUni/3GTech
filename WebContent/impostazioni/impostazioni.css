@@ -54,7 +54,11 @@ form {
   display:none;
 }
 
-input[type="text"] {
+#indirizzo {
+  display:none;
+}
+
+input[type="text"], input[type="password"]{
   font-family: "Roboto";
   outline: 0;
   background: #f2f2f2;

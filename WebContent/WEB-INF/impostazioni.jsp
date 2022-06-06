@@ -13,18 +13,22 @@
     	<div class="logo"><a href="index"><img src="${pageContext.request.contextPath}/images/newLogo.png" alt=logo width=110px></a></div>
         <div class="scelta">
         	<label class=opt id="optEmail">MODIFICA EMAIL</label>
-        		<form action="" class=email id=email onSubmit="return validateEmail();">
-        			<input type=text placeholder="Vecchia Email">
-        			<input type=text placeholder="Nuova Email" id=newEmail>
+        		<form action="ModificaEmail" class=email id=email onSubmit="return validateEmail();">
+        			<input type=text placeholder="Nuova Email" id=newEmail name=newEmail>
         			<input type=submit value="APPLICA MODIFICHE">
         			<p id=errorEmail></p>
         		</form>
         	<label class=opt id=optPassword>MODIFICA PASSWORD</label>
-        		<form class=password id=password onSubmit="return validatePassword();">
-        			<input type=text placeholder="Vecchia Password">
-        			<input type=text placeholder="Nuova Password" id=newPassword>
+        		<form action="ModificaPassword" class=password id=password onSubmit="return validatePassword();">
+        			<input type="password" placeholder="Nuova Password" id=newPassword name=newPassword>
         			<input type=submit value="APPLICA MODIFICHE">
         			<p id=errorPassword></p>
+        		</form>
+        	<label class=opt id=optIndirizzo>MODIFICA INDIRIZZO</label>
+        		<form action="ModificaIndirizzo" class=indirizzo id=indirizzo onSubmit="return validateIndirizzo();">
+        			<input type=text placeholder="Nuovo Indirizzo" id=newIndirizzo name=newIndirizzo>
+        			<input type=submit value="APPLICA MODIFICHE">
+        			<p id=errorIndirizzo></p>
         		</form>
         	<label class=opt>VISUALIZZA STORICO ACQUISTI</label>
         </div>

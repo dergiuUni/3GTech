@@ -1,8 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 
@@ -210,7 +208,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		return false;
 	}
 	
-	public int quantitàProdotti() {
+	public int quantitaProdotti() {
 		Connettore con = new Connettore();
 		ResultSet result;
 		try {

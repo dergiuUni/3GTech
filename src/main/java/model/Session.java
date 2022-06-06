@@ -27,15 +27,18 @@ public class Session {
 			request.getSession().setMaxInactiveInterval(5*60);
 			if(ut.isAdmin(utente)) {
 				request.getSession(true).setAttribute("utente", "ADMIN");
+				request.getSession().setAttribute("email", utente.getEmail());
 				return true;
 			}
 			else {
 				if(ut.isCliente(utente)) {
 					request.getSession(true).setAttribute("utente", "CLIENTE");
+					request.getSession().setAttribute("email", utente.getEmail());
 					return true;
 				}
 				else {
 					request.getSession(true).setAttribute("utente", "OSPITE");
+					request.getSession().setAttribute("email", utente.getEmail());
 				}
 			}
 		}

@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("/index").forward(request, response);
 		}
 		else {
+			s.destroySession(request);
 			request.getRequestDispatcher("/DispatcherLoginServlet").forward(request, response);
 		}
 	}

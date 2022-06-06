@@ -114,8 +114,26 @@ public class UtenteImplementazioneDAO implements UtenteDAO{
 	@Override
 	public boolean modificaPassword(UtenteBean utenteBean) {
 		Query q = new Query();
-		if(utenteBean.getEmail() != null && utenteBean.getEmail().length() <= 30 && utenteBean.getPassword() != null && utenteBean.getPassword().length() <= 20) {
+		if(utenteBean.getEmail() != null) {
+			System.out.println(utenteBean.getEmail()+" "+utenteBean.getPassword()); //per debugging
 			return q.controlloAndUpdateQueryUtente(utenteBean.getEmail(), "UPDATE Utente SET password = '" + utenteBean.getPassword() + "' WHERE email = '" + utenteBean.getEmail() + "'", username, password);
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean modificaIndirizzo(UtenteBean utenteBean) {
+		Query q = new Query();
+		if(utenteBean.getEmail() != null) {
+			return q.controlloAndUpdateQueryUtente(utenteBean.getEmail(), "UPDATE Utente SET indirizzo = '" + utenteBean.getIndirizzo() + "' WHERE email = '" + utenteBean.getEmail() + "'", username, password);
+		}
+		return false;
+	}
+	
+	public boolean modificaEmail(UtenteBean utenteBean) {
+		Query q = new Query();
+		if(utenteBean.getEmail() != null) {
+			return q.controlloAndUpdateQueryUtente(utenteBean.getEmail(), "UPDATE Utente SET email = '" + utenteBean.getIndirizzo() + "' WHERE email = '" + utenteBean.getEmail() + "'", username, password);
 		}
 		return false;
 	}

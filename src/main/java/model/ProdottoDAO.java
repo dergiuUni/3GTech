@@ -14,7 +14,7 @@ public interface ProdottoDAO {
 	public boolean    	  modificaTipo         (ProdottoBean prodottoBean); 
 	public boolean        modificaQuantita     (ProdottoBean prodottoBean); 
 	public boolean        decrementaQuantita   (ProdottoBean prodottoBean);
-	public int            quantitàProdotti     ();
+	public int            quantitaProdotti     ();
 	public void           leggiSingoloProdotto (ProdottoBean prodottoBean);
 	public JSONArray leggiProdotto    ();
 	public JSONArray utimiInseriti    ();
