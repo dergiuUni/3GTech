@@ -40,6 +40,7 @@ public class DispatcherProdottoServlet extends HttpServlet {
 		prodotto.setCodice(Short.valueOf((String)request.getParameter("id")));
 		dao.leggiSingoloProdotto(prodotto);
 		request.setAttribute("prodotto", prodotto);
+		request.setAttribute("prodottiRandom", dao.random().toString());
 		request.getRequestDispatcher("WEB-INF/prodotto.jsp").forward(request, response);
 	}
 

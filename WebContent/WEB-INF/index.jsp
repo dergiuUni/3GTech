@@ -60,7 +60,7 @@
 					    	JSONObject ob = new JSONObject(random.getString(i));
 					%>
 						<div class="product">
-							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> href="" onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
+							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
 							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
 							<div class="DivPrezzo">
 								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>

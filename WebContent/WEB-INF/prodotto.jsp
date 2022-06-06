@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="model.ProdottoBean" %>
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <!DOCTYPE html>
 <html>
 
@@ -101,6 +103,10 @@
 	<%@include file="header.jsp" %>
 	<%@include file="navbar.jsp" %>
 	<%ProdottoBean p=(ProdottoBean)request.getAttribute("prodotto"); %>
+	<%String path1="/3GTech/imageProdotto/"+p.getCodice()+"/1.jpg";%>
+	<%String path2="/3GTech/imageProdotto/"+p.getCodice()+"/2.jpg";%>
+	<%String path3="/3GTech/imageProdotto/"+p.getCodice()+"/3.jpg";%>
+	<%String path4="/3GTech/imageProdotto/"+p.getCodice()+"/4.jpg";%>
 	
 	<div class=containerMaxMax>
 	
@@ -109,7 +115,7 @@
 		<div class = "prodMax">
 			<h2><%=p.getNome() %></h2>
 			<div class = prodotto>
-				<img class = "immagine" id="slider" src = "${pageContext.request.contextPath}/macbook/1.jpg" alt = "Immagine Prodotto">
+				<img class = "immagine" id="slider" src=<%=path1 %> alt = "Immagine Prodotto">
 			</div>
 		</div>
 		
@@ -141,48 +147,51 @@
 					<tr>
 						<td><button class= buttonSx onclick="back();"></button> <br>
 						<td class = space>
-						<td><button class= imm1 onclick="imm1();"></button> <br>
+						<td><button style="background-image:url(<%=path1%>)" class= imm1 onclick="imm1();"></button> <br>
 						<td class = space>
-						<td><button class= imm2 onclick="imm2();"></button> <br>
+						<td><button style="background-image:url(<%=path2%>)" class= imm2 onclick="imm2();"></button> <br>
 						<td class = space>
-						<td><button class= imm3 onclick="imm3();"></button> <br>
+						<td><button style="background-image:url(<%=path3%>)" class= imm3 onclick="imm3();"></button> <br>
 						<td class = space>
-						<td><button class= imm4 onclick="imm4();"></button> <br>
+						<td><button style="background-image:url(<%=path4%>)" class= imm4 onclick="imm4();"></button> <br>
 						<td class = space>
 						<td><button class= buttonDx onclick="forward();"></button> <br>
 						<td class = space>
 				</table>
-				<script>
-					var immagine = 1;
-					
+				<script>		
+					var immagine=1;
 					function imm1(){
-						immagine = 1;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
+						immagine=1;
+						document.getElementById("slider").src="<%=path1 %>";
 					}
 					function imm2(){
-						immagine = 2;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
+						immagine=2;
+						document.getElementById("slider").src="<%=path2 %>";
 					}
 					function imm3(){
-						immagine = 3;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
+						immagine=3;
+						document.getElementById("slider").src="<%=path3 %>";
 					}
 					function imm4(){
-						immagine = 4;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
+						immagine=4;
+						document.getElementById("slider").src="<%=path4 %>";
 					}
 					
 					function forward(){
+						if(immagine > 4) immagine = 1;
+						if(immagine==1) document.getElementById("slider").src="<%=path2 %>";
+						else if(immagine==2) document.getElementById("slider").src="<%=path3 %>";
+						else if(immagine==3) document.getElementById("slider").src="<%=path4 %>";
+						else if(immagine==4) document.getElementById("slider").src="<%=path1 %>";
 						immagine++;
-						if(immagine > 3)
-							immagine = 1;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
 					}
 					function back(){
+						if(immagine < 1) immagine = 4;
+						if(immagine==1) document.getElementById("slider").src="<%=path4 %>";
+						else if(immagine==2) document.getElementById("slider").src="<%=path1 %>";
+						else if(immagine==3) document.getElementById("slider").src="<%=path2 %>";
+						else if(immagine==4) document.getElementById("slider").src="<%=path3 %>";
 						immagine--;
-						if(immagine <1)
-							immagine = 3;
-						document.getElementById("slider").src="../images/macbook/"+immagine+".jpg";
 					}
 				</script>
 			</div>
@@ -193,8 +202,8 @@
 		
 		
 	</div>
-
-
+	</div>
+	
 	<div class = descrizione>
 		<h2 class = descBar> Descrizione prodotto</h2>
 		<div class = areaDesc>
@@ -204,45 +213,41 @@
 	
 	
 	<!-- FORM PER LA RECENSIONE --> 
-	<h2 class = sezioneProdotti> Lascia una recensione!</h2>
+	<h2 class = descBar> Lascia una recensione!</h2>
 	<div class = recensione>
-		<form action="RecensioneServlet" method="post">
-		
-		<div class = sinistra>
-			<p class = dati> <b>Inserisci i dati:</b></p>
-			<input class = recsx name = Username type = text placeholder = "Inserisci il tuo username">
-			<input class = recsx type="text" name="nome" placeholder = "Inserisci il titolo della recensione">
-			<script class = recsx type="text/javascript">star(3);</script>
-		</div>
-		
-		<div class = destra>
+		<form class=formRecensione action="RecensioneServlet" method="post">
 			<p><b>Racconta com'è il prodotto:</b><p>
 			<textarea class = recdx cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
-		</div>
 		<input class=invia type=submit value=Invia>
 		</form>
 	</div>
      
 	<!-- PRODOTTI CORRELATI -->
 		<div class=containerMax>
-			<h2 class=sezioneProdotti> Prodotti Correlati</h2>
+			<h2 class=descBar>Prodotti Consigliati</h2>
 			<section class="prodottiNuovi">	
-				 <% for(int i=0; i<3; i++){ %>
+				 <% JSONArray random = new JSONArray(request.getAttribute("prodottiRandom").toString());
+					for(int i = 0; i < random.length(); i++){
+				    	JSONObject ob = new JSONObject(random.getString(i)); %>
 						<div class="product">
-						<h2 class="TitleProduct">Nome Prodotto</h2><hr>
-						<!-- ESEMPIO PRODOTTO-->
-						<img src="../images/macbook.jpg" class="ImageProduct">
-						<div class="DivPrezzo">
-							<article class="ArticlePrezzo">X.Y$</article>
+							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
+							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							<div class="DivPrezzo">
+								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
+							</div>
 						</div>
-					</div>
 				<% } %>
 			</section>
 		</div>
 		
-	</div>
 	
 	<%@include file="footer.jsp" %>
+	<script>
+		function goTo(id){
+			var path="DispatcherProdottoServlet?id="+id;
+			location.replace(path);
+		}
+	</script>
 </body>
 
 </html>
