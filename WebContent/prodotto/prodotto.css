@@ -2,18 +2,97 @@
 
 body{
 	margin:0%;
-	background-color:white;
 	font-family:"Roboto";
 	font-variant:small-caps;
-	text-transform:uppercase;
+/*	background-image : url("../images/sfondo1.jpeg");
+	background-size : cover;*/
+	background-color : white;
 }
+
+/*SLIDER PRODOTTI*/
+.sliderButton{
+	float : left;
+	background-color :  #eeeeee;
+	height : 71px;
+	width : 492px;
+	margin-left : 118px;
+	border-radius : 100px;
+}
+
+.imm1{
+	width : 65px;
+	height :65px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-image: url("../imageProdotto/1/1.jpg");
+	background-size : cover;
+}
+.imm2{
+	width : 65px;
+	height :65px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-image: url("../images/macbook/2.jpg");
+	background-size : cover;
+}
+.imm3{
+	width : 65px;
+	height :65px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-image: url("../images/macbook/3.jpg");
+	background-size : cover;
+}
+.imm4{
+	width : 65px;
+	height :65px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-image: url("../images/macbook/4.jpg");
+	background-size : cover;
+}
+
+
+
+.space{
+	width : 20px;
+}
+
+
+.buttonSx{
+	margin-left : 10px;
+	background-image : url("../images/freccia-s.jpg");
+	background-size : cover;	
+	float:left;
+	border-color : black;
+	border-radius: 100px;
+	width : 65px;
+	height : 65px;
+	text-align : center;
+}
+
+.buttonDx{
+	background-image : url("../images/freccia-d.jpg");
+	background-size : cover;
+	float:right;
+	border-color : black;
+	border-radius: 100px;
+	width:65px;
+	height : 65px;
+	text-align : center;
+}
+
 
 /* IMMAGINE PRODOTTO */
 
 .parteSopra{
-    height : 600px; 
-    margin:1%;
-    padding:3%;
+    height : 630px;
+    padding-left:3%;
+    padding-right:3%;
     padding-top:1%;
 }
 
@@ -23,20 +102,30 @@ body{
 
 .prodotto{
 	float:left;
-    height:400px;
-    width:400px;
+	height : 400px;
+	width : 550px;
     border-radius: 10px;
     border-style : solid;
     border-color : black;
-    border-width : 2 px;
-    margin-left: 45px;
+    border-width : 1.2px;
+    margin-left: 25px;
     margin-top : 20px;
-    padding:3%;
+    padding-left:2%;
+    padding-right:3%;
     padding-top:1%;
 }
 
+.immagine{
+	width: 100%;
+	height :100%;
+	object-position : contain;
+}
+
 .caratteristiche{
-	padding : 3.5%;
+	padding-bottom : 1%;
+	padding-left:3.5%;
+    padding-right:3.5%;
+    padding-top:3.5%;
     margin-left : 680px;
     margin-top : -100px;
 	
@@ -80,15 +169,12 @@ body{
 	width : 28px;
 }
 
-.aggiungiCarrello{
-	border-radius : 50px;
-	border-style : solid;
-	border-color : black;
-}
+
 
 .aggiungiCarrelloButton{
-	border-radius : 50px;
-	border-style : solid;
+	width: 300px;
+	height : 70px;
+	margin-left : 260px;
 }
 
 
@@ -112,9 +198,9 @@ body{
 
 .areaDesc{
 	border-radius: 10px;
-    border-style : outset;
+    border-style : solid;
     border-color : black;
-    border-width : 1 px;
+    border-width : 0.2 px;
 }
 
 /* Prodotti */
@@ -244,10 +330,8 @@ element.style {
 	margin-left : 5%;
 	margin-rigth: 5%;
 	margin-bottom : 5%;
-	height : 800px;
+	height : 450px;
 }
-
-
 
 .sinistra{
 	float : left;

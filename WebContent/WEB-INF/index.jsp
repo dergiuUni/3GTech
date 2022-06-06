@@ -39,7 +39,7 @@
 					    	JSONObject ob = new JSONObject(nuovi.getString(i));
 					%>
 						<div class="product">
-							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet><%= ob.getString("nome")%></a></h2><hr>
+							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
 							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
 							<div class="DivPrezzo">
 								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
@@ -60,7 +60,7 @@
 					    	JSONObject ob = new JSONObject(random.getString(i));
 					%>
 						<div class="product">
-							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet><%= ob.getString("nome")%></a></h2><hr>
+							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> href="" onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
 							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
 							<div class="DivPrezzo">
 								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
@@ -72,6 +72,12 @@
 		</div>
 
 		<%@include file="footer.jsp" %>
+		<script>
+			function goTo(id){
+				var path="DispatcherProdottoServlet?id="+id;
+				location.replace(path);
+			}
+		</script>
 	</body>
 </html>
 

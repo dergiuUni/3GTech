@@ -35,12 +35,11 @@ public class DispatcherProdottoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//mi serve il codice del prodotto cosi riaccedo al db per ricavare le info da passare alla jsp
-		Gson gson = new Gson();
 		ProdottoBean prodotto = new ProdottoBean();
-		ProdottoImplementazioneDAO primpl = new ProdottoImplementazioneDAO();
-		prodotto.setCodice(Short.valueOf((String)request.getSession().getAttribute("codiceProdottoScelto")));
-		primpl.leggiSingoloProdotto(prodotto);
-		request.setAttribute("valoriProdotto", gson.toJson(prodotto));
+		ProdottoImplementazioneDAO dao = new ProdottoImplementazioneDAO();
+		prodotto.setCodice(Short.valueOf((String)request.getParameter("id")));
+		dao.leggiSingoloProdotto(prodotto);
+		request.setAttribute("prodotto", prodotto);
 		request.getRequestDispatcher("WEB-INF/prodotto.jsp").forward(request, response);
 	}
 
