@@ -109,7 +109,7 @@ public class Session {
 	}
 	
 	public boolean isInizializzatoCarrello(HttpServletRequest request) {
-		if(request.getSession(false).getAttribute("carrello") != null) {
+		if((String)request.getSession(false).getAttribute("carrello") != null) {
 			return true;
 		}
 		return false;

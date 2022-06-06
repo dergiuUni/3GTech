@@ -1,3 +1,5 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -29,6 +31,53 @@
 			<!-- PRODOTTI: NOVITA' -->
 			<div class=containerMax>
 				<div class=separator>&nbsp;<br>&nbsp;</div>
+				<div class=sezioneProdotti><label class=sezione><strong>Ultimi inseriti</strong></label></div>
+				<section class="prodottiNuovi">	
+					<%
+						JSONArray nuovi = new JSONArray(request.getAttribute("prodottiNuovi").toString());
+					    for(int i = 0; i < nuovi.length(); i++){
+					    	JSONObject ob = new JSONObject(nuovi.getString(i));
+					%>
+						<div class="product">
+							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet><%= ob.getString("nome")%></a></h2><hr>
+							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							<div class="DivPrezzo">
+								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
+							</div>
+						</div>
+					<% } %>
+				</section>
+			</div>
+			
+			<!-- PRODOTTI: OFFERTE -->
+			<div class=containerMax>
+				<div class=separator>&nbsp;<br>&nbsp;</div>
+				<div class=sezioneProdotti><label class=sezione><strong>Prodotti in Offerta</strong></label></div>
+				<section class="prodottiNuovi">	
+					<%
+						JSONArray random = new JSONArray(request.getAttribute("prodottiRandom").toString());
+					    for(int i = 0; i < random.length(); i++){
+					    	JSONObject ob = new JSONObject(random.getString(i));
+					%>
+						<div class="product">
+							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet><%= ob.getString("nome")%></a></h2><hr>
+							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							<div class="DivPrezzo">
+								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
+							</div>
+						</div>
+					<% } %>
+				</section>
+			</div>
+		</div>
+
+		<%@include file="footer.jsp" %>
+	</body>
+</html>
+
+<!-- 
+			<div class=containerMax>
+				<div class=separator>&nbsp;<br>&nbsp;</div>
 				<div class=sezioneProdotti><label class=sezione><strong>Novità</strong></label></div>
 				<section class="prodottiNuovi">	
 					<% for(int i=0; i<3; i++){ %>
@@ -43,7 +92,6 @@
 				</section>
 			</div>
 			
-			<!-- PRODOTTI: OFFERTE -->
 			<div class=containerMax>
 				<div class=separator>&nbsp;<br>&nbsp;</div>
 				<div class=sezioneProdotti><label class=sezione><strong>Prodotti in Offerta</strong></label></div>
@@ -59,8 +107,4 @@
 					<% } %>
 				</section>
 			</div>
-		</div>
-
-		<%@include file="footer.jsp" %>
-	</body>
-</html>
+ -->

@@ -43,17 +43,17 @@ public class DispatcherIndexServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		ProdottoImplementazioneDAO prodottoImplementato = new ProdottoImplementazioneDAO();
 		
-		request.setAttribute("prodottiNuovi", prodottoImplementato.utimiInseriti());
-		request.setAttribute("prodottiRandom", prodottoImplementato.random());
+		request.setAttribute("prodottiNuovi", prodottoImplementato.utimiInseriti().toString());
+		request.setAttribute("prodottiRandom", prodottoImplementato.random().toString());
 		
 		/*
 		JSONArray arr = prodottoImplementato.random();
 		for(int i = 0; i < arr.length(); i++) {
 			JSONObject ob = new JSONObject(arr.getString(i));
-			System.out.print("\n" + arr.getString(i));
-			System.out.print("\n" + ob.getString("nome"));
+			//System.out.print("\n" + arr.getString(i));
+			//System.out.print("\n" + ob.getString("nome"));
 			//System.out.print("\n" + ob.getString("descrizione"));
-			System.out.print("\n" + ob.getInt("codice"));
+			//System.out.print("\n" + ob.getInt("codice"));
 		}
 		*/
 		

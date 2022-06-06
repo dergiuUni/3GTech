@@ -37,26 +37,20 @@ public class DispatcherCarrelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		GestioneCarrello carrello = new GestioneCarrello();
-		//request.setAttribute("listaCarrello", carrello.leggi(request));
-		//request.getRequestDispatcher("/WEB-INF/carrello.jsp").forward(request, response);
+		Session session = new Session();
 		
+		session.azzeraCarrello(request);
 		carrello.aggiungiElemento(request, (short)1, 1);
-		carrello.aggiungiElemento(request, (short)3, 1);
-		carrello.aggiungiElemento(request, (short)2, 3);
-		carrello.aggiungiElemento(request, (short)1, 2);
+		carrello.aggiungiElemento(request, (short)2, 1);
+		carrello.aggiungiElemento(request, (short)3, 3);
+		carrello.aggiungiElemento(request, (short)4, 2);
 		
-		System.out.print(request.getSession().getAttribute("utente"));
+		carrello.eliminaElemento(request, (short)3);
 		JSONArray arr = carrello.leggi(request);
-		//System.out.print(arr);
-		
-		if(arr.length() != 0) {
-			for(int i = 0; i < arr.length(); i++) {
-				JSONObject ob = new JSONObject(arr.getString(i));
-				System.out.print("\n" + arr.getString(i));
-				System.out.print("\n" + ob.getInt("codice"));
-				System.out.print("\n" + ob.getInt("quantita"));
-				System.out.print("\n" + ob.getString("nome"));
-			}
+		for(int i = 0; i < arr.length(); i++) {
+			JSONObject ob = new JSONObject(arr.getString(i));
+			System.out.print("\n");
+			System.out.print(ob);
 		}
 	}
 

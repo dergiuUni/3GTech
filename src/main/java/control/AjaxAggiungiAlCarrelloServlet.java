@@ -30,7 +30,7 @@ public class AjaxAggiungiAlCarrelloServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		GestioneCarrello carrello = new GestioneCarrello();
-		carrello.incrementaUnoQuantita(request, (short)request.getAttribute("codice"));
+		carrello.incrementaQauntitaDiUno(request, (short)request.getAttribute("codice"));
 	}
 
 	/**
