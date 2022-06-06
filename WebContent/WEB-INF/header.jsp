@@ -53,9 +53,9 @@
           	<table id=userMenu class=userMenu>
           		<% Session s=new Session();
 	    		if(s.isSessionAdmin(request)){%>
-	    				<tr><td><a class=menuA href="">Gestisci Catalogo</a></td></tr>
+	    				<tr><td><a class=menuA href="DispatcherGestisciCatalogo">Gestisci Catalogo</a></td></tr>
 	    		<%}else{ %>
-	    				<tr><td><a class=menuA href="">Carrello</a></td></tr>
+	    				<tr><td><a class=menuA href="DispatcherCarrelloServlet">Carrello</a></td></tr>
 	    		<% } %>
           		<tr><td><a class=menuA href="DispatcherImpostazioni">Impostazioni</a></td></tr>
           		<tr><td><a class=menuA href=LogoutServlet>Logout</a></td></tr>

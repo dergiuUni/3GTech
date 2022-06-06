@@ -39,6 +39,9 @@ public class DispatcherCarrelloServlet extends HttpServlet {
 		GestioneCarrello carrello = new GestioneCarrello();
 		Session session = new Session();
 		
+		request.setAttribute("listaCarrello", carrello.leggi(request).toString());
+		request.getRequestDispatcher("/WEB-INF/carrello.jsp").forward(request, response);
+		/*
 		session.azzeraCarrello(request);
 		carrello.aggiungiElemento(request, (short)1, 1);
 		carrello.aggiungiElemento(request, (short)2, 1);
@@ -52,6 +55,7 @@ public class DispatcherCarrelloServlet extends HttpServlet {
 			System.out.print("\n");
 			System.out.print(ob);
 		}
+		*/
 	}
 
 	/**

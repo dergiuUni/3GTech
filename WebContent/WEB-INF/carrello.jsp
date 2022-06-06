@@ -11,7 +11,7 @@
 	
 	<body>
 		<%
-			JSONArray getArray = new JSONArray(request.getAttribute("prodottiRandom").toString());
+			JSONArray getArray = new JSONArray(request.getAttribute("listaCarrello").toString());
 		%>
 			<table>
 			<tr><td>Email</td><td>Password</td></tr>

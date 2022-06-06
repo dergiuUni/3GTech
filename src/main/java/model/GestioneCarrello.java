@@ -82,6 +82,7 @@ public class GestioneCarrello {
 					return true;
 				}
 			}
+			aggiungiElemento(request, codice, 1);
 		}
 		return false;
 	}

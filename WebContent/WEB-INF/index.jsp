@@ -52,7 +52,7 @@
 			<!-- PRODOTTI: OFFERTE -->
 			<div class=containerMax>
 				<div class=separator>&nbsp;<br>&nbsp;</div>
-				<div class=sezioneProdotti><label class=sezione><strong>Prodotti in Offerta</strong></label></div>
+				<div class=sezioneProdotti><label class=sezione><strong>Prodotti</strong></label></div>
 				<section class="prodottiNuovi">	
 					<%
 						JSONArray random = new JSONArray(request.getAttribute("prodottiRandom").toString());
