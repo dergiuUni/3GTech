@@ -303,7 +303,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 			Statement st = con.getConnection().createStatement();
 			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY inserimento DESC");
 			result.next();
-			for(int i = 0; i < 10 && result != null; i++) {
+			for(int i = 0; i < 3 && result != null; i++) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
@@ -330,11 +330,13 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
 			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 20");
-			while(result.next()) {
+			int i=0;
+			while(result.next() && i<3) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
 				result.next();
+				i++;
 			}
 			result.close();
 			con.closeConnection();
