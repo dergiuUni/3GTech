@@ -58,7 +58,7 @@ function validateReg(){
 		return false;
 	}
 	
-	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ \d{3}$/))){
+	if(!(indirizzo.value.match(/^[A-z]+ [A-z]+ \d{1,3}$/))){
 		var errore=document.getElementById("error");
 		css(errore);
 		errore.style.height="40px";
@@ -100,7 +100,7 @@ function validateReg(){
 		return false;
 	}
 	
-	if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(password.value)==false){
+	if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@-_!%*#?&])[A-Za-z\d$@-_!%*#?&]{8,}$/.test(password.value)==false){
 		var errore=document.getElementById("error");
 		css(errore);
 		errore.style.width="400px";
@@ -192,7 +192,7 @@ function validatePassword(){
 		return 0;
 	}
 	
-	if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(password.value)==false){
+	if(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@-_!%*#?&])[A-Za-z\d$@-_!%*#?&]{8,}$/.test(password.value)==false){
 		console.log("Sono caduto in errore 3");
 		return 0;
 	}

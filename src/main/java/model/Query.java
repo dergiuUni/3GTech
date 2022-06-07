@@ -1,18 +1,17 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 
 public class Query {
-	public Query() {
-		
-	}
+	public Query() {}
 	
 	public boolean updateQuery(String query, String email, String password) {
-		Connettore con = new Connettore();
 		try {
-			con.OpenConnection(email, password);
-			con.getConnection().createStatement().executeUpdate(query);
-			con.closeConnection();
+			System.out.print("Provo a chiamare ConnectionPool");
+			Connection con=ConnectionPool.getConnection(email, password);
+			con.createStatement().executeUpdate(query);
+			ConnectionPool.releaseConnection(con);
 			return true;
 		}
 		catch(Exception e) {
@@ -23,16 +22,16 @@ public class Query {
 	}
 	
 	public boolean controlloAndUpdateQueryProdotto(Short codice, String query, String email, String password) {
-		Connettore con = new Connettore();
 		try {
-			con.OpenConnection(email, password);
-			ResultSet result = con.getConnection().createStatement().executeQuery("SELECT count(codice) FROM Prodotto WHERE codice = " + codice);
+			System.out.print("Provo a chiamare ConnectionPool");
+			Connection con=ConnectionPool.getConnection(email, password);
+			ResultSet result = con.createStatement().executeQuery("SELECT count(codice) FROM Prodotto WHERE codice = " + codice);
 			result.next();
 			if(result.getInt(1) >= 0) {
-				con.getConnection().createStatement().executeUpdate(query);
+				con.createStatement().executeUpdate(query);
 			}
 			result.close();
-			con.closeConnection();
+			ConnectionPool.releaseConnection(con);
 			return true;
 		}
 		catch(Exception e) {
@@ -43,16 +42,16 @@ public class Query {
 	}
 
 	public boolean controlloAndUpdateQueryUtente(String emailUtente, String query, String email, String password) {
-		Connettore con = new Connettore();
 		try {
-			con.OpenConnection(email, password);
-			ResultSet result = con.getConnection().createStatement().executeQuery("SELECT count(email) FROM Utente WHERE email = '" + emailUtente + "'");
+			System.out.print("Provo a chiamare ConnectionPool");
+			Connection con=ConnectionPool.getConnection(email, password);
+			ResultSet result = con.createStatement().executeQuery("SELECT count(email) FROM Utente WHERE email = '" + emailUtente + "'");
 			result.next();
 			if(result.getInt(1) >= 0) {
-				con.getConnection().createStatement().executeUpdate(query);
+				con.createStatement().executeUpdate(query);
 			}
 			result.close();
-			con.closeConnection();
+			ConnectionPool.releaseConnection(con);
 			return true;
 		}
 		catch(Exception e) {
@@ -63,16 +62,16 @@ public class Query {
 	}
 	
 	public boolean controlloAndUpdateQueryOrdine(int id, String query, String email, String password) {
-		Connettore con = new Connettore();
 		try {
-			con.OpenConnection(email, password);
-			ResultSet result = con.getConnection().createStatement().executeQuery("SELECT count(idOrdine) FROM Ordine WHERE idOrdine = " + id);
+			System.out.print("Provo a chiamare ConnectionPool");
+			Connection con=ConnectionPool.getConnection(email, password);
+			ResultSet result = con.createStatement().executeQuery("SELECT count(idOrdine) FROM Ordine WHERE idOrdine = " + id);
 			result.next();
 			if(result.getInt(1) >= 0) {
-				con.getConnection().createStatement().executeUpdate(query);
+				con.createStatement().executeUpdate(query);
 			}
 			result.close();
-			con.closeConnection();
+			ConnectionPool.releaseConnection(con);
 			return true;
 		}
 		catch(Exception e) {

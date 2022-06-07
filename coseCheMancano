@@ -9,8 +9,6 @@ fare:
 - servlet gestione catalogo(logica poiche dispatcher lo fa gia)
 - ajax aggiungi al carrello nel prodotto ps:servlet fatta
 - sistemare forse la pagina index
-- nella index memorizzare il codice del prodotto che si preme quando viene invocato il dispatcher
-	 prodotto poiche solo con quello possiamo ricavere le info da poi stampare nella pagina prodotto
 - implementare crittografia psw
 - schema navigazionale del sito 
 - i pulsanti sotto "chi siamo" ecc...
