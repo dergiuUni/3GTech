@@ -153,3 +153,9 @@ body {
   background-size:cover;
   font-family: "Roboto", sans-serif;
 }
+
+@media screen and (max-width: 980px){
+	.page{
+		width:500px;
+	}
+}

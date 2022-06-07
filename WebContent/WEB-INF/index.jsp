@@ -8,13 +8,6 @@
 		<meta charset="ISO-8859-1">
 		<title>HomePage</title>
 		<link rel=stylesheet href="${pageContext.request.contextPath}/index/index.css">
-		<link rel=stylesheet href="${pageContext.request.contextPath}/index/max1101px.css">
-		<link rel=stylesheet href="${pageContext.request.contextPath}/index/max864px.css">
-		<!-- 
-		<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/header.css">
-		<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/footer.css">
-		<link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/navbar.css">
-		non serve -->
 		<%@page import="java.util.ArrayList" %>
 		<%@page import="java.util.Iterator" %>
 		<%@page import="model.ProdottoBean" %>
