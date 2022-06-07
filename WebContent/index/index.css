@@ -73,6 +73,7 @@ body{
 }
 
 .ImageProduct{
+	object-fit : contain;
     display:block;
     margin:0px auto;
     text-align:center;
@@ -136,6 +137,7 @@ body{
 	}	
 
 	.ImageProduct{
+		object-fit : contain;
     	display:block;
     	margin:0px auto;
     	text-align:center;
@@ -267,6 +269,7 @@ body{
 }
 
 .ImageProduct{
+	object : contain;
     display:block;
     margin:0px auto;
     text-align:center;

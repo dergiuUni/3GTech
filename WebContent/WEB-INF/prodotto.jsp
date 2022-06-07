@@ -221,7 +221,7 @@
 			<p><b>Racconta com'è il prodotto:</b><p>
 			<textarea class = recdx cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
 			<div>
-				<script class = recsx type="text/javascript">star(3);</script>
+				<script type="text/javascript">star(3);</script>
 				<input class=invia type=submit value=Invia>
 			</div>
 		</form>

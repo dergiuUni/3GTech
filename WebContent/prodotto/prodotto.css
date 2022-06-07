@@ -346,26 +346,6 @@ element.style {
     padding:20px;
 }
 
-.recsx{
-	margin-top: 500px;
-	width: 450px;
-	float: left;
-	background-color : #f2f2f2;
-	box-sizing: border-box;
-    font-size: 14px;
-    border-radius : 20px;
-    font-family: "Roboto", sans-serif;
-	outline: 0;
-    background: #f2f2f2;
-    margin: 0 0 12px;
-    padding: 12px;
-    font-size: 14px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
-    border-color: black;
-    border-width: 2px;
-}
 
 .recdx{
 	width : 800px;
