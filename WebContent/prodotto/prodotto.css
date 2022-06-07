@@ -284,6 +284,7 @@ element.style {
 }
 
 .ImageProduct{
+	object-fit : contain;
 	color: blu;
     display:block;
     margin:2px auto;
