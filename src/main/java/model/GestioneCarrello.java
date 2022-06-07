@@ -82,9 +82,9 @@ public class GestioneCarrello {
 					return true;
 				}
 			}
-			aggiungiElemento(request, codice, 1);
 		}
-		return false;
+		aggiungiElemento(request, codice, 1);
+		return true;
 	}
 	
 	public boolean eliminaElemento(HttpServletRequest request, short codice) {

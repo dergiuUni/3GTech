@@ -1,30 +1,25 @@
 package control;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import model.ProdottoImplementazioneDAO;
 
 /**
- * Servlet implementation class AjaxRicercaProdottoServlet
+ * Servlet implementation class ComputerServlet
  */
-@WebServlet("/AjaxRicercaProdottoServlet")
-public class AjaxRicercaProdottoServlet extends HttpServlet {
+@WebServlet("/ComputerServlet")
+public class ComputerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxRicercaProdottoServlet() {
+    public ComputerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,24 +28,10 @@ public class AjaxRicercaProdottoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    List<String> list = new ArrayList<String>();
-	   
-	    ProdottoImplementazioneDAO pr = new ProdottoImplementazioneDAO();
-	    try {
-	    list = pr.cerca(request.getParameter("cerco"));
-	    list.add("item1");
-	    list.add("item2");
-	    list.add("item3");
-	    String json = new Gson().toJson(list);
-	    
-
-	    response.setContentType("application/json");
-	    response.setCharacterEncoding("UTF-8");
-	    response.getWriter().write(json);
-	    }
-	    catch (Exception e) {
-			System.out.print(e);
-		}
+		ProdottoImplementazioneDAO prodottoImplementato = new ProdottoImplementazioneDAO();
+		request.setAttribute("prodottiNuovi", prodottoImplementato.utimiInseritiComputer().toString());
+		request.setAttribute("prodottiRandom", prodottoImplementato.computerRandom().toString());
+		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 	}
 
 	/**

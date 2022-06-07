@@ -39,7 +39,13 @@ public class DispatcherCarrelloServlet extends HttpServlet {
 		GestioneCarrello carrello = new GestioneCarrello();
 		Session session = new Session();
 		
-		request.setAttribute("listaCarrello", carrello.leggi(request).toString());
+		if(session.leggiCarrello(request) != null) {
+			request.setAttribute("listaCarrello", carrello.leggi(request).toString());
+		}
+		else {
+			request.setAttribute("listaCarrello", "[]");
+		}
+		
 		request.getRequestDispatcher("/WEB-INF/carrello.jsp").forward(request, response);
 		/*
 		session.azzeraCarrello(request);

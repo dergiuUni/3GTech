@@ -25,6 +25,7 @@
 			<tr>
 			  <td><%=ob.getInt("codice")%><td>
 			  <td><%=ob.getString("descrizione")%><td>
+			  <td><%=ob.getInt("quantitaCarrello")%><td>
 			</tr> 
 			<%
 			 }

@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 
@@ -329,14 +331,12 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 20");
-			int i=0;
-			while(result.next() && i<3) {
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 6");
+			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
 				result.next();
-				i++;
 			}
 			result.close();
 			con.closeConnection();
@@ -349,6 +349,295 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		return null;
 	}
 	
+	public JSONArray videogameRandom() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Videogame' ORDER BY RAND() LIMIT 6");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray consoleRandom() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Console' ORDER BY RAND() LIMIT 6");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray computerRandom() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Computer' ORDER BY RAND() LIMIT 6");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray elettrodomesticiRandom() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Elettrodomestici' ORDER BY RAND() LIMIT 6");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray altroRandom() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Altro' ORDER BY RAND() LIMIT 8");
+			while(result.next()) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray utimiInseritiVideogame() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Videogame' ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 3 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray utimiInseritiConsole() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Console' ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 3 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray utimiInseritiComputer() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Computer' ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 3 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray utimiInseritiElettrodomestici() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Elettrodomestici' ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 3 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray utimiInseritiAltro() {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Altro' ORDER BY inserimento DESC");
+			result.next();
+			for(int i = 0; i < 3 && result != null; i++) {
+				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
+				p.setCodice(result.getShort("codice"));
+				array.put(gson.toJson(p));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public ArrayList<String> cerca(String cerco) {
+		ArrayList<String> array = new ArrayList<String>();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT nome FROM Prodotto WHERE Prodotto.nome LIKE '%"+ cerco + "%'");
+			result.next();
+			while(result.next()) {
+				array.add(result.getString("nome"));
+				result.next();
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
 	
 	/**
 	 * Elenco di tutte le funzioni di questa classe. 

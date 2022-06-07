@@ -65,21 +65,21 @@ public class Session {
 		}
 		else {
 			if (request.getSession(false).getAttribute("utente") == "CLIENTE") {
-				return false;
+				return true;
 			}
 			else {
-				return true;
+				return false;
 			}
 		}
 	}
 	
 	public boolean isSessionOspite(HttpServletRequest request) {
 		if(request.getSession(false) == null) {
-			return true;
+			return false;
 		}
 		else {
 			if (request.getSession(false).getAttribute("utente") == "OSPITE") {
-				return false;
+				return true;
 			}
 			else {
 				return false;

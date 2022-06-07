@@ -107,6 +107,14 @@
 	<%String path2="/3GTech/imageProdotto/"+p.getCodice()+"/2.jpg";%>
 	<%String path3="/3GTech/imageProdotto/"+p.getCodice()+"/3.jpg";%>
 	<%String path4="/3GTech/imageProdotto/"+p.getCodice()+"/4.jpg";%>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).on("click", "#addCarrello", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+            $.get("AjaxAggiungiAlCarrelloServlet?prodotto=" + <%=p.getCodice()%>, function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                $("#stampa").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+            });
+        });
+	</script>
 	
 	<div class=containerMaxMax>
 	
@@ -194,7 +202,7 @@
 			</div>
 			
 			<div class = carrello>
-				<input class = aggiungiCarrelloButton type = image src = "${pageContext.request.contextPath}/images/pulsante-aggiungialcarrello1.png" height = 65 width = 65>
+				<input id="addCarrello" class = aggiungiCarrelloButton type = image src = "${pageContext.request.contextPath}/images/pulsante-aggiungialcarrello1.png" height = 65 width = 65>
 			</div>
 		
 		
