@@ -12,12 +12,9 @@
 	<title>3GTech-Product Page</title>
 	<meta name = viewport content= "width=device-width, initial-scale =1.0">
 	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/prodotto.css">
-	<link rel=stylesheet href=max1497px.css>
-	<link rel=stylesheet href=max1101px.css>
-	<link rel=stylesheet href=max864px.css>
-	<link rel=stylesheet href="../header_footer/header.css">
-	<link rel=stylesheet href="../header_footer/navbar.css">
-	<link rel=stylesheet href="../header_footer/footer.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1497px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1101px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max864px.css">
 	
 	<style type="text/css">
 	
@@ -34,12 +31,12 @@
   			height: 16px;
   			display: block;
 		 	float: left;
-			background-image: url('../images/star-off.gif.webp');
+			background-image: url('/3GTech/images/star-off.gif.webp');
   			background-repeat: no-repeat;
   			cursor: pointer;
   		}
 		#STAR_RATING li.on{
-  			background-image: url('../images/star-on.gif.webp');
+  			background-image: url('/3GTech/images/star-on.gif.webp');
 		}
 		#STAR_RATING span.output{
 			padding: 3px;
@@ -51,7 +48,7 @@
 	<script type="text/javascript">
 		// faccio il preload dell'immagine utilizzata per l'effetto rollover
 		var staron = new Image();
-		staron.src = "../images/star-on.gif.webp..";
+		staron.src = "/3GTech/images/star-on.gif.webp";
 
 		// Definisco la funzione per la votazione che verrà lanciata all'evento onclick su una delle 5 stelle
 		function star_vota(QT)
@@ -140,7 +137,7 @@
 				</table>
 				
 				<table class = pagamento>
-				<tr> <td class = testo>Modalità di pagamento</td>
+				<tr> <td class = testo>Modalita di pagamento</td>
 					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/paypal.jpg" height = 35 width = 50> </td>
 					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/mastercard.webp" height = 35 width = 50> </td>	
 					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/visa.png" height = 35 width = 50> </td>
