@@ -34,12 +34,12 @@
   			height: 16px;
   			display: block;
 		 	float: left;
-			background-image: url('../../images/star-off.gif.webp');
+			background-image: url('../images/star-off.gif.webp');
   			background-repeat: no-repeat;
   			cursor: pointer;
   		}
 		#STAR_RATING li.on{
-  			background-image: url('../../images/star-on.gif.webp');
+  			background-image: url('../images/star-on.gif.webp');
 		}
 		#STAR_RATING span.output{
 			padding: 3px;
@@ -51,7 +51,7 @@
 	<script type="text/javascript">
 		// faccio il preload dell'immagine utilizzata per l'effetto rollover
 		var staron = new Image();
-		staron.src = "../images/star-on.gif.webp";
+		staron.src = "../images/star-on.gif.webp..";
 
 		// Definisco la funzione per la votazione che verrà lanciata all'evento onclick su una delle 5 stelle
 		function star_vota(QT)
@@ -129,16 +129,13 @@
 					<tr class = r><td>Categoria</td> <td class = vuoto1> </td> <td><%=p.getTipo() %></td></tr>
 					<tr><td>&nbsp;</td></tr>				
 					<tr class = r><td>Costi di spedizione</td>  <td class = vuoto1>  <td>Spedizione Gratuita</td></tr>
-					<tr><td>&nbsp;</td></tr>				
-					<tr ><td class = r>Modalità di pagamento</td>
-						<td >&nbsp;</td>
-						<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/paypal.jpg" height = 35 width = 50> </td>
-						<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/mastercard.webp" height = 35 width = 50> </td>
-						<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/visa.png" height = 35 width = 50> </td>
-					</tr>
-					<tr><td>&nbsp;</td></tr>				
-					<tr><td>&nbsp;</td></tr>			
-					<tr><td>&nbsp;</td></tr>			
+				</table>
+				
+				<table class = pagamento>
+				<tr> <td class = testo>Modalità di pagamento</td>
+					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/paypal.jpg" height = 35 width = 50> </td>
+					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/mastercard.webp" height = 35 width = 50> </td>	
+					<td class = vuoto> <img src = "${pageContext.request.contextPath}/images/visa.png" height = 35 width = 50> </td>
 				</table>
 			</div>
 		
@@ -218,7 +215,10 @@
 		<form class=formRecensione action="RecensioneServlet" method="post">
 			<p><b>Racconta com'è il prodotto:</b><p>
 			<textarea class = recdx cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
-		<input class=invia type=submit value=Invia>
+			<div>
+				<script class = recsx type="text/javascript">star(3);</script>
+				<input class=invia type=submit value=Invia>
+			</div>
 		</form>
 	</div>
      
