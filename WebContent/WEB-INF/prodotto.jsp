@@ -15,6 +15,7 @@
 	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1497px.css">
 	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1101px.css">
 	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max864px.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
 	<style type="text/css">
 	
@@ -252,6 +253,16 @@
 			var path="DispatcherProdottoServlet?id="+id;
 			location.replace(path);
 		}
+	</script>
+	<script src="${pageContext.request.contextPath}/zoomsl.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/zoomsl.min.js" type="text/javascript"></script>
+	<script>
+		$("document").ready(function(){
+			$("#slider").imagezoomsl({
+				zoomrange:[2,2],
+				innerzoom:true,
+			});
+		});
 	</script>
 </body>
 
