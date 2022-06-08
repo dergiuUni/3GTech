@@ -18,7 +18,7 @@
 	
 			<table class=where>
 				<tr><td class=title width=200px>Dove ci troviamo<hr></td></tr>
-				<tr><td><a class=foo href="">Le nostre sedi</a></td></tr>
+				<tr><td><a class=foo href="DispatcherWhereServlet">La nostra sede</a></td></tr>
 			</table>
 		</div>
 	
