@@ -256,7 +256,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 				con.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.out.print("error dao implementazione");
+				System.out.print("Errore leggiSingoloProdotto");
 			}
 		}
 	}
@@ -655,7 +655,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	}
 	
 	public ArrayList<String> elencoPerRicerca() {
-		String op="SELECT nome, codice FROM prodotto;";
+		String op="SELECT nome FROM prodotto;";
 		ArrayList<String> list=new ArrayList<String>();
 		Statement s;
 		ResultSet rs;
@@ -667,7 +667,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 				list.add(rs.getString("nome"));
 			}
 		}catch(SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("Errore in elencoPerRicerca");
 		}
 		return list;
 	}
@@ -743,13 +743,17 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		Short c=-1;
 			try {
 				con.OpenConnection(username, password);
-				result = con.getConnection().createStatement().executeQuery("SELECT * FROM Prodotto WHERE nome = '" + name+"';");
+				System.out.println(name);
+				result = con.getConnection().createStatement().executeQuery("SELECT * FROM Prodotto WHERE nome = '" + name+"'");
+				System.out.println("SELECT * FROM Prodotto WHERE nome = '" + name+"';\n");
 				result.next();
 				c= result.getShort("codice");
+				System.out.println(c+'\n');
 				result.close();
 				con.closeConnection();
 			} catch (SQLException e) {
-				System.out.print("error dao implementazione");
+				System.out.print("Errore in getProdottoByName\n");
+				System.out.println(e.getMessage());
 			}
 			return c;
 		}

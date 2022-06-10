@@ -54,16 +54,15 @@
 	</div>
 	</header>
 	<script>
-	$(document).ready(function(){
-  		$("#hiddenDiv tr").hide();
-	});
+	
+  	$("#hiddenDiv tr").hide();
 	
 	$(document).ready(function(){
   		$("#f1").on("keyup", function() {
     		var value = $(this).val().toLowerCase();
     		$("#hiddenDiv tr").filter(function() {
     			if(value.length>1)
-      				$(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+      				$(this).toggle($(this).text().toLowerCase().indexOf(value)>-1);
       			else $(this).hide($(this).text().toLowerCase().indexOf(value)>-1)
     		});
   		});
