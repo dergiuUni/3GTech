@@ -24,7 +24,7 @@ public class Session {
 		destroySession(request);
 		
 		if(request.getSession(false) == null) {
-			request.getSession().setMaxInactiveInterval(5*60);
+			request.getSession().setMaxInactiveInterval(60*60);
 			if(ut.isAdmin(utente)) {
 				request.getSession(true).setAttribute("utente", "ADMIN");
 				request.getSession().setAttribute("email", utente.getEmail());

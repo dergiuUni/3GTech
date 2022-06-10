@@ -26,7 +26,6 @@ public class ConnectionPool {
 		private static Connection createDBConnection(String email, String password) throws SQLException {
 			Connection newConnection = null;
 			newConnection = DriverManager.getConnection(db,email, password);
-			newConnection.setAutoCommit(false);
 			return newConnection;
 		}
 		

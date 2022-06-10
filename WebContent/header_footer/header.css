@@ -7,28 +7,18 @@ body{
 	text-transform:uppercase;
 }
 
-.options{
-	margin:0 2px 0 10px;
-	position:relative;
-	width:30px;
-}
-
-#optionsMenu{
-	visibility:hidden;
+#hiddenDiv{
 	position:absolute;
 	top:100px;
-	padding:3px;
-	border: solid 2px #384d54;
+	z-index:2;
+	left:630px;
 	background-color:white;
-	-moz-border-radius: 8px;
-  	-webkit-border-radius: 8px;
-  	border-radius: 8px;
-  	border-spacing: 0 0.4em;
-  	z-index:2;
-  	font-size:13px;
-  	width:165px;
-  	user-select: none;
-  	color:#57A773
+	border:solid 1px black;
+}
+
+#hiddenDiv td{
+	border-bottom:solid 1px black;
+	width:250px;
 }
 
 .slogan{
@@ -49,10 +39,6 @@ body{
 
 .formH{
 	display:flex;
-}
-
-.search{
-	margin:1px 5px 0 1px;
 }
 
 .divH{

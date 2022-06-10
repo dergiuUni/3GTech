@@ -1,20 +1,13 @@
 le pagine jsp da fare completamente sono:
 - carrello jsp
-- gestione catalogo jsp  
 - storico jsp
 PS per il carrello e gestione catalogo ci stanno i relativi file jsp nella web-inf, questi file vengono gia chiamati
 dalle servlet specifiche 
 
-fare:
-- servlet gestione catalogo(logica poiche dispatcher lo fa gia)
 - ajax aggiungi al carrello nel prodotto ps:servlet fatta
-- sistemare forse la pagina index
 - implementare crittografia psw
 - schema navigazionale del sito 
 - i pulsanti sotto "chi siamo" ecc...
-- le nostre sedi togliere perche è una sola sede o dobbiamo modifica tutto il sito con il db 
 - servlet ricerca
 - storico jsp
-- i pulsanti delle categorie da implementare per la visualizzazione
 - togliere magari il carrello da admin visto che l'admin non puo acquistare
-- bisogna vede le direttive del prof per il resto

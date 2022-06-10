@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="model.Session" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.ProdottoImplementazioneDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>3GTech-Header</title>
 <link rel=stylesheet href="${pageContext.request.contextPath}/header_footer/header.css">
+<script src="${pageContext.request.contextPath}jquery.3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -15,30 +19,15 @@
 		<div class=divH id=header>
 		<a href="index"><img class=logoH src="${pageContext.request.contextPath}/images/newLogo.png"></a>
 		  <form class="formH" action="">
-		  	<div class=optDiv onMouseOver="openOptions();" onMouseOut="closeOptions();">
-		  		 <img class=options src="${pageContext.request.contextPath}/images//options.png">
-		  		 <div id=optionsMenu>
-		  		 	<div class=categorie>
-		  		 		<label>Categorie:</label><hr>
-						<input id=computer type=checkbox value=Computer><label for=computer>Computer</label><br>
-						<input id=tv type=checkbox value=TV><label for=tv>TV</label><br>
-						<input id=cellulari type=checkbox value=Cellulari><label for=cellulari>Cellulari</label><br>
-						<input id=componenti type=checkbox value=Componenti><label for=componenti>Componenti</label><br>
-						<input id=videogames type=checkbox value=Videogames><label for=videogames>Videogames</label><br>
-						<input id=elettrodomestici type=checkbox value=Elettrodomestici><label for=elettrodomestici>Elettrodomestici</label><br><hr>
-					</div>
-					<label>Prezzo massimo:</label><br>
-						<input id=sliderPrezzo type=range step=1 min=0 max=999 value=0 oninput="show(this.value)"><label id=max>0$</label>
-						<script>
-            				function show(prezzo) {
-                			document.getElementById("max").innerHTML=prezzo +'$';
-            			}
-        				</script>
-		  		 </div>
-		  	</div>
-                 <input class=inputH id=f1 type="text" placeholder="Cosa stai cercando?" style=width:250px;> 
-                 <input class=search type="image" src="${pageContext.request.contextPath}/images//search2.png" alt="Cerca" width=30px>
-              </form>
+                 <input autocomplete=off class=inputH id=f1 type="text" placeholder="Cosa stai cercando?" style=width:250px;>
+          </form>
+          <table id=hiddenDiv>
+                 <%	ProdottoImplementazioneDAO dao=new ProdottoImplementazioneDAO();
+                	ArrayList<String> list=dao.elencoPerRicerca();
+                 	for(int j=0; j<list.size(); j++){%>
+               			<tr><td><a href="DispatcherProdottoSearchBar?name=<%=list.get(j)%>"><%=list.get(j) %></a></td></tr>
+               	 <%} %>
+          </table>
           <% if(session.getAttribute("utente")==null){ %> 
           <div class=userDiv onMouseOver="openMenu();" onMouseOut="closeMenu();">
           	<a class=logoLogin><img class=loginH src="${pageContext.request.contextPath}/images/account.png" width=50px></a>
@@ -64,7 +53,22 @@
          <% } %>
 	</div>
 	</header>
+	<script>
+	$(document).ready(function(){
+  		$("#hiddenDiv tr").hide();
+	});
 	
-	 <script src="${pageContext.request.contextPath}/header_footer/header.js"></script>
+	$(document).ready(function(){
+  		$("#f1").on("keyup", function() {
+    		var value = $(this).val().toLowerCase();
+    		$("#hiddenDiv tr").filter(function() {
+    			if(value.length>1)
+      				$(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+      			else $(this).hide($(this).text().toLowerCase().indexOf(value)>-1)
+    		});
+  		});
+	});
+	</script>
+	<script src="${pageContext.request.contextPath}/header_footer/header.js"></script>
 </body>
 </html>

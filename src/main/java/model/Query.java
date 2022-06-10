@@ -2,28 +2,26 @@ package model;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Query {
 	public Query() {}
 	
 	public boolean updateQuery(String query, String email, String password) {
 		try {
-			System.out.print("Provo a chiamare ConnectionPool");
 			Connection con=ConnectionPool.getConnection(email, password);
 			con.createStatement().executeUpdate(query);
 			ConnectionPool.releaseConnection(con);
 			return true;
 		}
-		catch(Exception e) {
-			System.out.print("error update query");
-			System.out.print(e);
+		catch(SQLException e) {
+			System.out.println(e.getMessage());
 		}
 		return false;
 	}
 	
 	public boolean controlloAndUpdateQueryProdotto(Short codice, String query, String email, String password) {
 		try {
-			System.out.print("Provo a chiamare ConnectionPool");
 			Connection con=ConnectionPool.getConnection(email, password);
 			ResultSet result = con.createStatement().executeQuery("SELECT count(codice) FROM Prodotto WHERE codice = " + codice);
 			result.next();

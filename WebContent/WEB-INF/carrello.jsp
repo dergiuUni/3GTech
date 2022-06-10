@@ -1,23 +1,22 @@
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.JSONArray"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>Carrello</title>
+	<link rel=stylesheet href="${pageContext.request.contextPath}/carrello/carrello.css">
 	</head>
 	
 	<body>
+		<%@include file="header.jsp" %>
+		<div class=cart>
 		<%
 			JSONArray getArray = new JSONArray(request.getAttribute("listaCarrello").toString());
 		%>
 			<table>
-			<tr><td>Email</td><td>Password</td></tr>
-			
-			
-			
 			<%
 			  for(int i = 0; i < getArray.length(); i++){
 				  JSONObject ob = new JSONObject(getArray.getString(i));
@@ -30,7 +29,8 @@
 			<%
 			 }
 			%>
-			
 			</table>
+		</div>
+		<%@include file="footer.jsp" %>
 	</body>
 </html>

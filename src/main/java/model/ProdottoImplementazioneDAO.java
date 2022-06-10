@@ -1,8 +1,11 @@
 package model;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 
@@ -35,10 +38,9 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	@Override
 	public boolean inserisciProdotto(ProdottoBean prodottoBean) {
 		Query q = new Query();
-		if(prodottoBean.getCodice() != 0 && prodottoBean.getNome() != null && prodottoBean.getNome().length() <= 100 && prodottoBean.getTipo() != null && prodottoBean.getDescrizione() != null && prodottoBean.getDescrizione().length() <= 300 && prodottoBean.getPrezzo() != 0 && prodottoBean.getQuantitaDB() != 0 && prodottoBean.getInserimento() != null) {
-			return q.updateQuery("INSERT INTO Prodotto (nome, tipo, descrizione, prezzo, quantita, inserimento) VALUES ('" + prodottoBean.getNome() + "','" + String.valueOf(prodottoBean.getTipo()) + "','" + prodottoBean.getDescrizione() + "'," + prodottoBean.getPrezzo() + "," + prodottoBean.getQuantitaDB() + ",'" + prodottoBean.getInserimento() + "')", username, password);
-		}
-		return false;
+		return q.updateQuery("INSERT INTO Prodotto (nome, tipo, descrizione, prezzo, quantita, inserimento) VALUES ('" + prodottoBean.getNome() 
+		+ "','" + String.valueOf(prodottoBean.getTipo()) + "','" + prodottoBean.getDescrizione() + "'," + prodottoBean.getPrezzo() 
+		+ ", '1' ,'" + prodottoBean.getInserimento() + "');", username, password);
 	}
 
 	/**
@@ -56,10 +58,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	@Override
 	public boolean rimuoviProdotto(ProdottoBean prodottoBean) {
 		Query q = new Query();
-		if(prodottoBean.getCodice() != 0) {
 			return q.controlloAndUpdateQueryProdotto(prodottoBean.getCodice(), "DELETE FROM Prodotto WHERE codice = " + prodottoBean.getCodice(), username, password);
-		}
-		return false;
 	}
 
 	/**
@@ -223,7 +222,6 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 			return quantita;
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.print("error dao implementazione");
 		}
 		return 0;
@@ -616,7 +614,6 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	
 	public ArrayList<String> cerca(String cerco) {
 		ArrayList<String> array = new ArrayList<String>();
-		Gson gson = new Gson();
 		Connettore con = new Connettore();
 		
 		try {
@@ -637,6 +634,42 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 			System.out.print(e);
 		}
 		return null;
+	}
+	
+	public String elenco() {
+		String op="SELECT codice,nome FROM PRODOTTO";
+		String elenco="";
+		Statement s;
+		ResultSet rs;
+		try {
+			Connection c=ConnectionPool.getConnection(username, password);
+			s=c.createStatement();
+			rs=s.executeQuery(op);
+			while(rs.next()) {
+				elenco+="CODICE: "+rs.getInt("codice")+" - - - - NOME: "+rs.getString("nome")+"<br>";
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return elenco;
+	}
+	
+	public ArrayList<String> elencoPerRicerca() {
+		String op="SELECT nome, codice FROM prodotto;";
+		ArrayList<String> list=new ArrayList<String>();
+		Statement s;
+		ResultSet rs;
+		try {
+			Connection c=ConnectionPool.getConnection(username, password);
+			s=c.createStatement();
+			rs=s.executeQuery(op);
+			while(rs.next()) {
+				list.add(rs.getString("nome"));
+			}
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
 	}
 	
 	/**
@@ -661,7 +694,66 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	public void elencoFunzioni() {
 		
 	}
-}
+	
+	public String selectOrdiniUtente(UtenteBean utente) {
+		String op="SELECT * FROM ordine WHERE utente='"+utente.getEmail()+"';";
+		String elenco="";
+		Statement s;
+		ResultSet rs;
+		try {
+			Connection c=ConnectionPool.getConnection(username, password);
+			s=c.createStatement();
+			rs=s.executeQuery(op);
+			while(rs.next()) {
+				elenco+="ID ORDINE: "+rs.getInt("idOrdine")+" - - - - DATA: "+rs.getString("dataOrdine")+
+						" - - - - CODICE PRODOTTO: "+rs.getInt("prodotto")+" (x "+rs.getInt("quantitaProdotto")+
+						") - - - - INDIRIZZO SPEDIZIONE: "+rs.getString("indirizzoSpedizione")+"<br>";
+			}
+			elenco+="Non ci sono altri acquisti!";
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return elenco;
+	}
+	
+	public String selectOrdiniData(Date d1, Date d2) {
+		String op="SELECT * FROM ordine WHERE dataOrdine BETWEEN '"+d1+"' AND '"+d2+"';";
+		String elenco="";
+		Statement s;
+		ResultSet rs;
+		try {
+			Connection c=ConnectionPool.getConnection(username, password);
+			s=c.createStatement();
+			rs=s.executeQuery(op);
+			while(rs.next()) {
+				elenco+="ID ORDINE: "+rs.getInt("idOrdine")+" - - - - DATA: "+rs.getString("dataOrdine")+" - - - - UTENTE: "+rs.getString("utente")+
+						" - - - - CODICE PRODOTTO: "+rs.getInt("prodotto")+" (x "+rs.getInt("quantitaProdotto")+
+						") - - - - INDIRIZZO SPEDIZIONE: "+rs.getString("indirizzoSpedizione")+"<br>";
+			}
+			elenco+="Non ci sono altri acquisti!";
+		}catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return elenco;
+	}
+	
+	public Short getProdottoByName(String name) {
+		Connettore con = new Connettore();
+		ResultSet result;
+		Short c=-1;
+			try {
+				con.OpenConnection(username, password);
+				result = con.getConnection().createStatement().executeQuery("SELECT * FROM Prodotto WHERE nome = '" + name+"';");
+				result.next();
+				c= result.getShort("codice");
+				result.close();
+				con.closeConnection();
+			} catch (SQLException e) {
+				System.out.print("error dao implementazione");
+			}
+			return c;
+		}
+	}
 
 /*
  * executeUpdate per insert, delete o update executeQuery per le query select

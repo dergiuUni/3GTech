@@ -1,7 +1,7 @@
  package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 
@@ -32,5 +32,9 @@ public interface ProdottoDAO {
 	public JSONArray      utimiInseritiAltro     ();
 	public ArrayList<String>      cerca                  (String cerco);
 	public void           elencoFunzioni         ();
-
+	public String elenco();
+	public String selectOrdiniUtente(UtenteBean utente);
+	public String selectOrdiniData(Date d1, Date d2);
+	public ArrayList<String> elencoPerRicerca();
+	public Short getProdottoByName(String name);
 }
