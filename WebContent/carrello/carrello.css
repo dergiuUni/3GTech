@@ -3,3 +3,24 @@
 	margin:15px 30px 15px 30px;
 	border:double #57A773 4px;
 }
+
+.tabella{
+	border-style : solid;
+}
+
+.prodotto{
+	border-style : solid;
+	border-color : #57A773;
+	border-width: 2 px;
+	height : 500px;
+	width : auto;
+	margin : 5%;
+	padding : 2%;
+}
+
+.riga{
+	border-width : 2px;
+	border-style : solid;
+	border-color : black;
+	
+}

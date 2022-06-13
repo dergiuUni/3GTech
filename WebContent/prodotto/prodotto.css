@@ -300,5 +300,301 @@ body{
     border-radius: 8px;
 }
 
+@media screen and (max-width: 1250px){
+	
+/*SLIDER PRODOTTI*/
+.sliderButton{
+	float : left;
+	background-color :  #eeeeee;
+	height : 71px;
+	width : 492px;
+	margin-left : 118px;
+	border-radius : 100px;
+}
 
+.imm1{
+	width : 65px;
+	height :65px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: black;
+	background-size : cover;
+}
+
+.space{
+	width : 20px;
+}
+
+.buttonSx{
+	margin-left : 10px;
+	background-image : url("../images/freccia-s.jpg");
+	background-size : cover;	
+	float:left;
+	border-color : black;
+	border-radius: 100px;
+	width : 65px;
+	height : 65px;
+	text-align : center;
+}
+
+.buttonDx{
+	background-image : url("../images/freccia-d.jpg");
+	background-size : cover;
+	float:right;
+	border-color : black;
+	border-radius: 100px;
+	width:65px;
+	height : 65px;
+	text-align : center;
+}
+
+
+
+
+/* IMMAGINE PRODOTTO */
+
+.parteSopra{
+    height : 630px;
+    padding-left:3%;
+    padding-right:3%;
+    padding-top:1%;
+}
+
+.prodMax{
+	 margin-left: 30px;
+}
+
+.prodotto{
+	float:left;
+	height : 400px;
+	width : 550px;
+    border-radius: 10px;
+    border-style : solid;
+    border-color : black;
+    border-width : 1.2px;
+    margin-left: 25px;
+    margin-top : 20px;
+    padding-left:2%;
+    padding-right:3%;
+    padding-top:1%;
+}
+
+.immagine{
+	width: 100%;
+	height :100%;
+	object-fit : contain;
+}
+
+.caratteristiche{
+	padding-bottom : 1%;
+	padding-left:3.5%;
+    padding-right:3.5%;
+    padding-top:3.5%;
+    margin-left : 680px;
+    margin-top : -90px;
+    margin-bottom : 145px;
+	
+}
+
+.caratteristicheInterno{
+	padding : 2%;
+	margin-left : 55px;
+	
+}
+
+
+.r{
+	background-color : #eeeeee;
+	width : 200px;
+}
+
+
+.vuoto{
+	background-color : white;
+	border-style : solid;
+	border-color: black;
+	height : 35px;
+	width : 50px;
+}
+
+.vuoto1{
+	background-color : white;
+	width : 38px;
+}
+
+.aggiungiCarrelloButton{
+	width: 300px;
+	height : 70px;
+	margin-left : 260px;
+}
+
+
+/*PAGAMENTO*/
+.pagamento{
+	padding : 2%;
+	margin-left : 55px;
+}
+
+.testo{
+	background-color : #eeeeee;
+	width : 200px;
+}
+
+
+/*TABELLA DESCRIZIONE*/
+
+.descBar{
+	background-color:#57A773;
+	text-align:center;
+}
+
+.descrizione{
+	width:100%;
+}
+
+.areaDesc{
+	border-radius: 10px;
+    border-style : solid;
+    border-color : black;
+    border-width : 0.2 px;
+    margin-left:5%;
+    margin-right:5%;
+    padding-left:1%;
+    padding-right:1%;
+    text-align:center;
+}
+
+/* Prodotti */
+
+.containerMax{
+	margin-bottom:33%;
+}
+
+.prodottiNuovi {
+	margin-top:1%;
+	margin-bottom:1%;
+	position:absolute;
+	left:2.5%;
+	right:3.5%;
+    display: block;
+    background-image:url("../images/sfondoIndex.jpg");
+    background-size:cover;
+    width: 95%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.product{
+	float:left;
+    background-color: white;
+    height:300px;
+    width:300px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    margin:3%;
+    padding:3%;
+    padding-top:1%;
+}
+
+
+.TitleProduct{
+    text-align: center;
+    margin-top:0%;
+    margin-bottom:0%;
+    padding-top:2.5%;
+    padding-bottom:1%;
+    font-size:medium;
+    height:10%;
+}
+
+.ImageProduct{
+	object-fit : contain;
+	color: blu;
+    display:block;
+    margin:2px auto;
+    text-align:center;
+    height:250px;
+    width:250px;
+}
+
+.DivPrezzo{
+    margin-bottom: solid white 2px;
+    margin-left: solid white 2px;
+    margin-right: solid white 2px;
+    background-color: #57A773;
+    height: 30px;
+    font-weight:bold;
+    font-size:150%;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.ArticlePrezzo{
+    text-align: center;
+}
+
+/*FORM*/
+
+.recensione{
+	margin-left : 532px;
+	margin-right: 5%;
+	height : 450px;
+}
+
+.formRecensione{
+	border-radius: 10px;
+    border-style : solid;
+    border-color : black;
+    border-width : 0.2 px;
+    align-items:center;
+    display:inline-block;
+    padding:20px;
+}
+
+
+.areaTesto{
+	height : 250px;
+	float: right;
+	background-color : #f2f2f2;
+	box-sizing: border-box;
+    font-size: 14px;
+    border-radius : 20px;
+    font-family: "Roboto", sans-serif;
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 12px;
+    font-size: 14px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-color: black;
+    border-width: 2px;
+}
+/*TASTO INVIA*/
+
+
+.invia{
+	float : right;
+	width: 80px;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background-color: #57A773;
+    border: 0;
+    padding: 15px;
+    color: #000000;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+	
+	
+}
 
