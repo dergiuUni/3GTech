@@ -152,11 +152,11 @@
 						<td class = space>
 						<td><button style="background-image:url(<%=path1%>)" class= imm1 onclick="imm1();"></button> <br>
 						<td class = space>
-						<td><button style="background-image:url(<%=path2%>)" class= imm2 onclick="imm2();"></button> <br>
+						<td><button style="background-image:url(<%=path2%>)" class= imm1 onclick="imm2();"></button> <br>
 						<td class = space>
-						<td><button style="background-image:url(<%=path3%>)" class= imm3 onclick="imm3();"></button> <br>
+						<td><button style="background-image:url(<%=path3%>)" class= imm1 onclick="imm3();"></button> <br>
 						<td class = space>
-						<td><button style="background-image:url(<%=path4%>)" class= imm4 onclick="imm4();"></button> <br>
+						<td><button style="background-image:url(<%=path4%>)" class= imm1 onclick="imm4();"></button> <br>
 						<td class = space>
 						<td><button class= buttonDx onclick="forward();"></button> <br>
 						<td class = space>
@@ -220,7 +220,7 @@
 	<div class = recensione>
 		<form class=formRecensione action="RecensioneServlet" method="post">
 			<p><b>Racconta com'è il prodotto:</b><p>
-			<textarea class = recdx cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
+			<textarea class = areaTesto cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
 			<div>
 				<script type="text/javascript">star(3);</script>
 				<input class=invia type=submit value=Invia>

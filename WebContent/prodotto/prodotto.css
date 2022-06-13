@@ -25,40 +25,10 @@ body{
 	border-color: black;
 	background-size : cover;
 }
-.imm2{
-	width : 65px;
-	height :65px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	background-image: url("../images/macbook/2.jpg");
-	background-size : cover;
-}
-.imm3{
-	width : 65px;
-	height :65px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	background-image: url("../images/macbook/3.jpg");
-	background-size : cover;
-}
-.imm4{
-	width : 65px;
-	height :65px;
-	border-style: solid;
-	border-width: 2px;
-	border-color: black;
-	background-image: url("../images/macbook/4.jpg");
-	background-size : cover;
-}
-
-
 
 .space{
 	width : 20px;
 }
-
 
 .buttonSx{
 	margin-left : 10px;
@@ -82,6 +52,8 @@ body{
 	height : 65px;
 	text-align : center;
 }
+
+
 
 
 /* IMMAGINE PRODOTTO */
@@ -134,30 +106,12 @@ body{
 	margin-left : 55px;
 	
 }
- /*PAGAMENTO*/
-.pagamento{
-	padding : 2%;
-	margin-left : 55px;
-}
-
-.testo{
-	background-color : #eeeeee;
-	width : 200px;
-}
 
 
 .r{
 	background-color : #eeeeee;
 	width : 200px;
 }
-
-.r1{
-	background-color : #eeeeee;
-	width : 300px;
-	height : 45px;
-	text-align : center;
-}
-
 
 
 .vuoto{
@@ -173,17 +127,22 @@ body{
 	width : 38px;
 }
 
-.vuoto2{
-	background-color : white;
-	width : 28px;
-}
-
-
-
 .aggiungiCarrelloButton{
 	width: 300px;
 	height : 70px;
 	margin-left : 260px;
+}
+
+
+/*PAGAMENTO*/
+.pagamento{
+	padding : 2%;
+	margin-left : 55px;
+}
+
+.testo{
+	background-color : #eeeeee;
+	width : 200px;
 }
 
 
@@ -216,27 +175,6 @@ body{
 	margin-bottom:33%;
 }
 
-.containerMaxMax{
-	display:block;
-}
-
-.sezioneProdotti{	
-	margin-left : 5%;
-	padding-left : 5%;
-	margin-right : 5%;
-	padding-right : 5%;
-	border-top:solid white 2px;
-	border-bottom:solid white 2px;
-	background-color:#57A773;
-	text-align:center;
-}
-
-.separator{
-	background-color:#57A773;
-	width:100%;
-	height:100%;
-}
-
 .prodottiNuovi {
 	margin-top:1%;
 	margin-bottom:1%;
@@ -250,15 +188,6 @@ body{
     -moz-border-radius: 50px;
     -webkit-border-radius: 50px;
     border-radius: 50px;
-}
-
-
-element.style {
-    height: 175.856px;
-    width: 256.781px;
-    left: 241px;
-    top: 321px;
-    display: none;
 }
 
 .product{
@@ -312,28 +241,12 @@ element.style {
     text-align: center;
 }
 
-.ButtonCarrello{
-    margin-left: auto;
-    margin-right: 0.5%;
-}
-
 /*FORM*/
-
-
 
 .recensione{
 	margin-left : 532px;
 	margin-right: 5%;
 	height : 450px;
-}
-
-.destra{
-	float : right;
-	width: 800px;
-	height : 600px;
-	margin-right : 5%;
-	margin-top: 50px;
-	padding-top:10px;
 }
 
 .formRecensione{
@@ -347,8 +260,7 @@ element.style {
 }
 
 
-.recdx{
-	width : 800px;
+.areaTesto{
 	height : 250px;
 	float: right;
 	background-color : #f2f2f2;
@@ -356,7 +268,6 @@ element.style {
     font-size: 14px;
     border-radius : 20px;
     font-family: "Roboto", sans-serif;
-	outline: 0;
     background: #f2f2f2;
     width: 100%;
     margin: 0 0 12px;
@@ -366,7 +277,6 @@ element.style {
     -webkit-border-radius: 8px;
     border-color: black;
     border-width: 2px;
-    resize:none;
 }
 /*TASTO INVIA*/
 
