@@ -80,7 +80,7 @@ public class DispatcherAcquistaCarrello extends HttpServlet {
 		}
 		
 		carrello.eliminaTutto(request);
-		request.getRequestDispatcher("/WEB-INF/storico.jsp");
+		request.getRequestDispatcher("DispatcherFatture");
 	}
 
 	/**

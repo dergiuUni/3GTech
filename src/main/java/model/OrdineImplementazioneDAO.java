@@ -170,6 +170,10 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 			Statement st = con.getConnection().createStatement();
 			ResultSet result = st.executeQuery("SELECT * FROM Ordine WHERE utente ='" + utente.getEmail() + "'");
 
+			UtenteImplementazioneDAO utimp = new UtenteImplementazioneDAO();
+			utimp.leggiSingoloUtente(utente);
+			array.put(gson.toJson(utente));
+			
 			while (result.next()) {
 				OrdineBean ordine = new OrdineBean();
 				ordine.setId(result.getInt("idOrdine"));
@@ -177,17 +181,16 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 				ordine.setDataConsegna(result.getDate("dataConsegna"));
 				ordine.setOrarioOrdine(result.getTime("orarioOrdine"));
 				ordine.setOrarioConsegna(result.getTime("orarioConsegna"));
-				ProdottoBean prodotto = new ProdottoBean();
-				prodotto.setCodice(result.getShort("prodotto"));
-				ordine.setProdotto(prodotto);
 				ordine.setPrezzoProdotto(result.getDouble("prezzoProdotto"));
 			    ordine.setQuantitaProdotto(result.getInt("quantitaProdotto"));
 			    ordine.setIvaProdotto(result.getInt("ivaProdotto"));
-			    UtenteBean ut = new UtenteBean();
-			    ut.setEmail(result.getString("utente"));
-			    ordine.setUtente(ut);
 			    ordine.setIndirizzo(result.getString("indirizzoSpedizione"));
 				array.put(gson.toJson(ordine));
+				ProdottoBean pr = new ProdottoBean();
+				ProdottoImplementazioneDAO primp = new ProdottoImplementazioneDAO();
+			    pr.setCodice(result.getShort("prodotto"));
+				primp.leggiSingoloProdotto(pr);
+			    array.put(gson.toJson(pr));
 			}
 			result.close();
 			con.closeConnection();
