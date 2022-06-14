@@ -122,6 +122,7 @@ public class Session {
 		if(request.getSession(false).getAttribute("utente")!=null) {
 			request.getSession(false).removeAttribute("carrello");
 			request.getSession(false).removeAttribute("utente");
+			request.getSession(false).removeAttribute("email");
 		}
 		
 		request.getSession(false).invalidate();
@@ -132,5 +133,9 @@ public class Session {
 		else {
 			return false;
 		}
+	}
+	
+	public String getEmail(HttpServletRequest request) {
+		return (String)request.getSession(false).getAttribute("email");
 	}
 }

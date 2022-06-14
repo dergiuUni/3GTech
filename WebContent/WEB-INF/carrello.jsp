@@ -43,6 +43,7 @@
 			</table>
 			<div>
 				<input id="addCarrello" class = acquista type = image src = "${pageContext.request.contextPath}/images/acquistaOra.png" height = 80 width = 250>
+				<a href="DispatcherAcquistaCarrello" > tesst</a>
 			</div>
 			<%
 			 }

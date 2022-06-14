@@ -52,7 +52,9 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 			return q.updateQuery("INSERT INTO Ordine (dataOrdine, dataConsegna, orarioOrdine, orarioConsegna, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getDataConsegna() + "', '" + ordine.getOrarioOrdine() + "', '" + ordine.getOrarioConsegna() + "', " + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '" + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
 		}
 		if(ordine != null && ordine.getDataOrdine() != null && ordine.getOrarioOrdine() != null && ordine.getProdotto() != null && ordine.getProdotto().getCodice() != 0 && ordine.getPrezzoProdotto()  != 0  && ordine.getQuantitaProdotto() != 0 && ordine.getIvaProdotto() != 0 && ordine.getUtente() != null && ordine.getUtente().getEmail()  != null && ordine.getIndirizzo() != null) {
-			return q.updateQuery("INSERT INTO Ordine (dataOrdine, orarioOrdine, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getOrarioOrdine() + "', "  + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '"  + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
+			q.updateQuery("INSERT INTO Ordine (dataOrdine, orarioOrdine, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getOrarioOrdine() + "', "  + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '"  + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
+			System.out.println("eseguito");
+			return true;
 		}
 		return false;
 	}

@@ -292,6 +292,7 @@ public class UtenteImplementazioneDAO implements UtenteDAO{
 				utenteBean.setEmail(result.getString("email"));
 				utenteBean.setPassword(result.getString("password"));
 				utenteBean.setTipo(categoria.valueOf(result.getString("tipo")));
+				utenteBean.setIndirizzo(result.getString("indirizzo"));
 				result.close();
 				con.closeConnection();
 			} catch (Exception e) {

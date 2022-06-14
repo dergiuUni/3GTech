@@ -637,7 +637,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	}
 	
 	public String elenco() {
-		String op="SELECT codice,nome FROM PRODOTTO";
+		String op="SELECT codice,nome FROM Prodotto";
 		String elenco="";
 		Statement s;
 		ResultSet rs;
@@ -655,7 +655,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	}
 	
 	public ArrayList<String> elencoPerRicerca() {
-		String op="SELECT nome FROM prodotto;";
+		String op="SELECT nome FROM Prodotto;";
 		ArrayList<String> list=new ArrayList<String>();
 		Statement s;
 		ResultSet rs;
@@ -696,7 +696,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	}
 	
 	public String selectOrdiniUtente(UtenteBean utente) {
-		String op="SELECT * FROM ordine WHERE utente='"+utente.getEmail()+"';";
+		String op="SELECT * FROM Ordine WHERE utente='"+utente.getEmail()+"';";
 		String elenco="";
 		Statement s;
 		ResultSet rs;
@@ -717,7 +717,7 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 	}
 	
 	public String selectOrdiniData(Date d1, Date d2) {
-		String op="SELECT * FROM ordine WHERE dataOrdine BETWEEN '"+d1+"' AND '"+d2+"';";
+		String op="SELECT * FROM Ordine WHERE dataOrdine BETWEEN '"+d1+"' AND '"+d2+"';";
 		String elenco="";
 		Statement s;
 		ResultSet rs;
