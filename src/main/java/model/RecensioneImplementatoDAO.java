@@ -32,7 +32,7 @@ public class RecensioneImplementatoDAO implements RecensioneDAO {
 	public boolean aggiungiRecensione(RecensioneBEAN recensione) {
 		Query q = new Query();
 		if(recensione != null && recensione.getTesto() != null && recensione.getTesto().length() <= 100 && recensione.getProdotto() != null && recensione.getProdotto().getCodice() != 0 && recensione.getUtente() != null && recensione.getUtente().getEmail() != null) {
-			return q.updateQuery("INSERT INTO Recensione (testo, utente, prodotto) VALUES ('" + recensione.getTesto() + "', '" + recensione.getUtente().getEmail() + "', " + recensione.getProdotto().getCodice() + ")", username, password);
+			return q.updateQuery("INSERT INTO Recensione (stelle, testo, utente, prodotto) VALUES ('"+recensione.getStelle()+"','" + recensione.getTesto() + "', '" + recensione.getUtente().getEmail() + "', " + recensione.getProdotto().getCodice() + ")", username, password);
 		}
 		return false;
 	}

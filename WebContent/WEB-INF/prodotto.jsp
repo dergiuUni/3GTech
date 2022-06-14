@@ -46,6 +46,12 @@
 		}
 	</style>
 
+	
+	
+</head>
+
+<body>
+	<%int stella=0;%>
 	<script type="text/javascript">
 		// faccio il preload dell'immagine utilizzata per l'effetto rollover
 		var staron = new Image();
@@ -58,6 +64,11 @@
   			var star_output = '<span class="output">Hai votato ' + QT + ' stelle!</span>';
   			// Cambio dinamicamente il contenuto del DIV contenitore con il messaggio di  conferma di votazione avvenuta
  		 	document.getElementById('STAR_RATING').innerHTML = star_output;
+  			if(QT==1) document.getElementById("votoStelle").value=1;
+  			if(QT==2) document.getElementById("votoStelle").value=2;
+  			if(QT==3) document.getElementById("votoStelle").value=3;
+  			if(QT==4) document.getElementById("votoStelle").value=4;
+  			if(QT==5) document.getElementById("votoStelle").value=5;
 		}
 
 		// Definisco la funzione per "accendere" dinamicamente le stelle  unico argomento è il numero di stelle da accendere
@@ -94,10 +105,6 @@
   			star_accendi(QT);
 		}
 	</script>
-	
-</head>
-
-<body>
 	<%@include file="header.jsp" %>
 	<%@include file="navbar.jsp" %>
 	<%ProdottoBean p=(ProdottoBean)request.getAttribute("prodotto"); %>
@@ -216,11 +223,13 @@
 	
 	
 	<!-- FORM PER LA RECENSIONE --> 
+	<%request.getSession().setAttribute("prodotto", p);%>
 	<h2 class = descBar> Lascia una recensione!</h2>
 	<div class = recensione>
-		<form class=formRecensione action="RecensioneServlet" method="post">
+		<form class=formRecensione action="Recensione" method="post">
 			<p><b>Racconta com'è il prodotto:</b><p>
 			<textarea class = areaTesto cols = 50 rows =10 name = recensione placeholder = "Inscerisci la tua recensione"></textarea>
+			<input name=voto type=number style="display:none;" id=votoStelle>
 			<div>
 				<script type="text/javascript">star(3);</script>
 				<input class=invia type=submit value=Invia>
