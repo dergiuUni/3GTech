@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -46,17 +47,25 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
      *          </ul>
      */
 	@Override
-	public boolean inserisciOrdine(OrdineBean ordine) {
+	public int inserisciOrdine(OrdineBean ordine) {
 		Query q = new Query();
 		if(ordine != null && ordine.getDataOrdine() != null && ordine.getDataConsegna() != null && ordine.getOrarioOrdine() != null && ordine.getOrarioConsegna() != null && ordine.getProdotto() != null && ordine.getProdotto().getCodice() != 0 && ordine.getPrezzoProdotto()  != 0  && ordine.getQuantitaProdotto() != 0 && ordine.getIvaProdotto() != 0 && ordine.getUtente() != null && ordine.getUtente().getEmail()  != null && ordine.getIndirizzo() != null) {
-			return q.updateQuery("INSERT INTO Ordine (dataOrdine, dataConsegna, orarioOrdine, orarioConsegna, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getDataConsegna() + "', '" + ordine.getOrarioOrdine() + "', '" + ordine.getOrarioConsegna() + "', " + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '" + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
+			q.updateQuery("INSERT INTO Ordine (dataOrdine, dataConsegna, orarioOrdine, orarioConsegna, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getDataConsegna() + "', '" + ordine.getOrarioOrdine() + "', '" + ordine.getOrarioConsegna() + "', " + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '" + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
 		}
 		if(ordine != null && ordine.getDataOrdine() != null && ordine.getOrarioOrdine() != null && ordine.getProdotto() != null && ordine.getProdotto().getCodice() != 0 && ordine.getPrezzoProdotto()  != 0  && ordine.getQuantitaProdotto() != 0 && ordine.getIvaProdotto() != 0 && ordine.getUtente() != null && ordine.getUtente().getEmail()  != null && ordine.getIndirizzo() != null) {
 			q.updateQuery("INSERT INTO Ordine (dataOrdine, orarioOrdine, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES ('" + ordine.getDataOrdine() + "', '" + ordine.getOrarioOrdine() + "', "  + ordine.getProdotto().getCodice() + ", " + ordine.getProdotto().getPrezzo() + ", " + ordine.getQuantitaProdotto() + ", " + ordine.getIvaProdotto() + ", '"  + ordine.getUtente().getEmail() + "', '" + ordine.getIndirizzo() + "')", username, password);
 			System.out.println("eseguito");
-			return true;
 		}
-		return false;
+		int id=-1;
+		try {
+		Connection c=ConnectionPool.getConnection(username, password);
+		ResultSet rs=c.createStatement().executeQuery("SELECT idOrdine FROM Ordine WHERE dataOrdine='"+
+		ordine.getDataOrdine()+"' AND orarioOrdine='"+ordine.getOrarioOrdine()+"'AND prodotto='"+ordine.getProdotto().getCodice()+"';");
+		if(rs.next()) id=rs.getInt("idOrdine");
+		ConnectionPool.releaseConnection(c);
+		rs.close();
+		}catch(SQLException e) {}
+		return id;
 	}
 
 	/**

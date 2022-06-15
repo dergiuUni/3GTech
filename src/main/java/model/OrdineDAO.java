@@ -6,7 +6,7 @@ import org.json.JSONArray;
 
 public interface OrdineDAO {
 	
-	public boolean inserisciOrdine        (OrdineBean ordine);
+	public int inserisciOrdine        (OrdineBean ordine);
 	public boolean modificaDataConsegna   (OrdineBean ordine);
 	public boolean modificaOrarioConsegna (OrdineBean ordine);
 	public void    leggiSingoloOrdine     (OrdineBean ordine);

@@ -90,7 +90,6 @@ public class GestioneCarrello {
 	public boolean eliminaElemento(HttpServletRequest request, short codice) {
 		Session session = new Session();
 		JSONArray arr;
-		Gson gson = new Gson();
 		
 		if(session.isInizializzatoCarrello(request) == true) {
 			arr = new JSONArray(session.leggiCarrello(request));
