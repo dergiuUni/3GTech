@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+@media screen and (min-width:865px) and (max-width: 1102px){
+
+
+
+	.social{
+		position:relative;
+		left:38.5%;
+		top:40px;
+	}	
+}

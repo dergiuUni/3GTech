@@ -31,7 +31,7 @@ public class DispatcherSvuotaCarrello extends HttpServlet {
 		// TODO Auto-generated method stub
 		GestioneCarrello car = new GestioneCarrello();
 		car.eliminaTutto(request);
-		request.getRequestDispatcher("/WEB-INF/carrello.jsp").forward(request, response);
+		request.getRequestDispatcher("index").forward(request, response);
 	}
 
 	/**

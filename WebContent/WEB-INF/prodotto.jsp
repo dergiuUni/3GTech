@@ -12,9 +12,9 @@
 	<title>3GTech-Product Page</title>
 	<meta name = viewport content= "width=device-width, initial-scale =1.0">
 	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/prodotto.css">
-	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1497px.css">
-	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1101px.css">
-	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max864px.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1497.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max1101.css">
+	<link rel=stylesheet href="${pageContext.request.contextPath}/prodotto/max864.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	
 	<style type="text/css">
@@ -114,9 +114,9 @@
 	<%String path4="/3GTech/imageProdotto/"+p.getCodice()+"/4.jpg";%>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/jquery-3.6.0.js"></script>
 	<script type="text/javascript">
-		$(document).on("click", "#addCarrello", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
-            $.get("AjaxAggiungiAlCarrelloServlet?prodotto=" + <%=p.getCodice()%>, function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
-                $("#stampa").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+		$(document).on("click", "#addCarrello", function() { 
+            $.get("AjaxAggiungiAlCarrelloServlet?prodotto=" + <%=p.getCodice()%>, function(responseText) { 
+                $("#stampa").text(responseText);    
             });
         });
 	</script>
