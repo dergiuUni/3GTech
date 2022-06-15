@@ -329,12 +329,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 6");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
@@ -355,12 +354,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Videogame' ORDER BY RAND() LIMIT 6");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Videogame' ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
@@ -381,12 +379,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Console' ORDER BY RAND() LIMIT 6");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Console' ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
@@ -407,12 +404,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Computer' ORDER BY RAND() LIMIT 6");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Computer' ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
@@ -433,12 +429,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Elettrodomestici' ORDER BY RAND() LIMIT 6");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Elettrodomestici' ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
@@ -459,12 +454,11 @@ public class ProdottoImplementazioneDAO implements ProdottoDAO {
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Altro' ORDER BY RAND() LIMIT 8");
+			ResultSet result = st.executeQuery("SELECT * FROM Prodotto WHERE tipo = 'Altro' ORDER BY RAND() LIMIT 3");
 			while(result.next()) {
 				ProdottoBean p = new ProdottoBean(result.getString("nome"), result.getString("descrizione"), result.getDouble("prezzo"), categoria.valueOf(result.getString("tipo")), result.getInt("quantita"), result.getDate("inserimento"));
 				p.setCodice(result.getShort("codice"));
 				array.put(gson.toJson(p));
-				result.next();
 			}
 			result.close();
 			con.closeConnection();
