@@ -57,31 +57,32 @@ public class DispatcherAcquistaCarrello extends HttpServlet {
 		JSONArray arr = carrello.leggi(request);
 		
 		ArrayList<OrdineBean> list=new ArrayList<OrdineBean>();
-		for(int i = 0; i < arr.length(); i++) {
-			OrdineBean ordine = new OrdineBean();
-			JSONObject ob = new JSONObject(arr.getString(i));
-			pr = new Gson().fromJson(ob.toString(), ProdottoBean.class);
-			LocalDate now = LocalDate.now();  
-			LocalTime tim = LocalTime.now();
-			
-			ordine.setDataOrdine(Date.valueOf(now.getYear() + "-" + now.get(ChronoField.MONTH_OF_YEAR) + "-" + now.get(ChronoField.DAY_OF_MONTH)));
-			ordine.setOrarioOrdine(Time.valueOf(tim));
-			ordine.setProdotto(pr);
-			ordine.setPrezzoProdotto(pr.getPrezzo());
-			ordine.setQuantitaProdotto(pr.getQuantitaCarrello());
-			ordine.setIvaProdotto(10); 
-			ut.setEmail(session.getEmail(request));
-			utimp.leggiSingoloUtente(ut);
-			ordine.setUtente(ut);
-			ordine.setIndirizzo(ut.getIndirizzo()); 			
-			int id=orimp.inserisciOrdine(ordine);
-			ordine.setId(id);
-			list.add(ordine);
-			System.out.println(pr.getCodice());
+		if(arr != null) {
+			for(int i = 0; i < arr.length(); i++) {
+				OrdineBean ordine = new OrdineBean();
+				JSONObject ob = new JSONObject(arr.getString(i));
+				pr = new Gson().fromJson(ob.toString(), ProdottoBean.class);
+				LocalDate now = LocalDate.now();  
+				LocalTime tim = LocalTime.now();
+				
+				ordine.setDataOrdine(Date.valueOf(now.getYear() + "-" + now.get(ChronoField.MONTH_OF_YEAR) + "-" + now.get(ChronoField.DAY_OF_MONTH)));
+				ordine.setOrarioOrdine(Time.valueOf(tim));
+				ordine.setProdotto(pr);
+				ordine.setPrezzoProdotto(pr.getPrezzo());
+				ordine.setQuantitaProdotto(pr.getQuantitaCarrello());
+				ordine.setIvaProdotto(10); 
+				ut.setEmail(session.getEmail(request));
+				utimp.leggiSingoloUtente(ut);
+				ordine.setUtente(ut);
+				ordine.setIndirizzo(ut.getIndirizzo()); 			
+				int id=orimp.inserisciOrdine(ordine);
+				ordine.setId(id);
+				list.add(ordine);
+				System.out.println(pr.getCodice());
+			}
 		}
 		request.setAttribute("list", list);
 		carrello.eliminaTutto(request);
-		System.out.println("Carrello svuotato");
 		request.getRequestDispatcher("WEB-INF/fattura.jsp").forward(request, response);
 	}
 

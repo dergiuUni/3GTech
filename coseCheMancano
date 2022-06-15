@@ -1,2 +1,20 @@
 - storico jsp
 - implementare crittografia psw
+
+
+1)Nel carrello il pulsante di acquisto non funziona,
+ infatti usiamo un link separato e sta cosa va sistemata
+ 
+ fatta
+ 
+ 
+ 
+2)Bisogna fare che dalle impostazioni dell'utente si possa visionare lo storico
+ (vedete la pagina di gestione dell'admin, la sezione per visualizzare gli acquisti degli utenti vi può servire)
+
+fatto
+
+
+3)Nel carrello bisogna inserire il pulsante per svuotarlo, se non erro la funzione è già implementata 
+quindi va modificata solo la jsp
+fatto

@@ -30,7 +30,7 @@
         			<input type=submit value="APPLICA MODIFICHE">
         			<p id=errorIndirizzo></p>
         		</form>
-        	<label class=opt>VISUALIZZA STORICO ACQUISTI</label>
+        	<a class=opt href="DispatcherStoricoAcquistiFattura">VISUALIZZA STORICO ACQUISTI</a>
         </div>
      </div>
 	<script src="${pageContext.request.contextPath}/impostazioni/impostazioni.js"></script>

@@ -1,6 +1,7 @@
 package control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.ProdottoBean;
-import model.ProdottoImplementazioneDAO;
-import model.RecensioneBEAN;
-import model.RecensioneImplementatoDAO;
+import model.OrdineBean;
+import model.OrdineImplementazioneDAO;
+import model.Session;
+import model.UtenteBean;
 
 /**
- * Servlet implementation class DispatcherProdottoServlet
+ * Servlet implementation class DispatcherStoricoAcquistiFattura
  */
-@WebServlet("/DispatcherProdottoServlet")
-public class DispatcherProdottoServlet extends HttpServlet {
+@WebServlet("/DispatcherStoricoAcquistiFattura")
+public class DispatcherStoricoAcquistiFattura extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DispatcherProdottoServlet() {
+    public DispatcherStoricoAcquistiFattura() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,17 +33,16 @@ public class DispatcherProdottoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//mi serve il codice del prodotto cosi riaccedo al db per ricavare le info da passare alla jsp
-		ProdottoBean prodotto = new ProdottoBean();
-		ProdottoImplementazioneDAO dao = new ProdottoImplementazioneDAO();
+		// TODO Auto-generated method stub
+		OrdineImplementazioneDAO orimp = new OrdineImplementazioneDAO();
+		UtenteBean ut = new UtenteBean();
+		Session session = new Session();
 		
-		prodotto.setCodice(Short.valueOf((String)request.getParameter("id")));
-		dao.leggiSingoloProdotto(prodotto);
+		ut.setEmail(session.getEmail(request));
 		
-		request.setAttribute("prodotto", prodotto);
-
-		request.setAttribute("prodottiRandom", dao.random().toString());
-		request.getRequestDispatcher("WEB-INF/prodotto.jsp").forward(request, response);
+		
+		request.setAttribute("list", orimp.leggiOrdineArraylist(ut));
+		request.getRequestDispatcher("/WEB-INF/fattura.jsp").forward(request, response);
 	}
 
 	/**

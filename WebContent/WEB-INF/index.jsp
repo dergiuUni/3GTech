@@ -11,6 +11,7 @@
 		<%@page import="java.util.ArrayList" %>
 		<%@page import="java.util.Iterator" %>
 		<%@page import="model.ProdottoBean" %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	
 	<body>
@@ -32,8 +33,10 @@
 					    	JSONObject ob = new JSONObject(nuovi.getString(i));
 					%>
 						<div class="product">
-							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
-							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							<a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)">
+								<h2 class="TitleProduct"><%= ob.getString("nome")%></h2><hr>
+								<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							</a>
 							<div class="DivPrezzo">
 								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
 							</div>
@@ -53,8 +56,10 @@
 					    	JSONObject ob = new JSONObject(random.getString(i));
 					%>
 						<div class="product">
-							<h2 class="TitleProduct"><a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)"><%= ob.getString("nome")%></a></h2><hr>
-							<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							<a id=<%=ob.getBigInteger("codice")%> onClick="goTo(this.id)">
+								<h2 class="TitleProduct"><%= ob.getString("nome")%></h2><hr>
+								<img src="${pageContext.request.contextPath}/imageProdotto/<%= ob.getBigInteger("codice")%>/1.jpg" class="ImageProduct">
+							</a>
 							<div class="DivPrezzo">
 								<article class="ArticlePrezzo"><%=ob.getInt("prezzo")%>$</article>
 							</div>
@@ -71,39 +76,6 @@
 				location.replace(path);
 			}
 		</script>
+
 	</body>
 </html>
-
-<!-- 
-			<div class=containerMax>
-				<div class=separator>&nbsp;<br>&nbsp;</div>
-				<div class=sezioneProdotti><label class=sezione><strong>Novità</strong></label></div>
-				<section class="prodottiNuovi">	
-					<% for(int i=0; i<3; i++){ %>
-						<div class="product">
-							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet>Nome Prodotto</a></h2><hr>
-							<img src="${pageContext.request.contextPath}/imageProdotto/1/1.jpg" class="ImageProduct">
-							<div class="DivPrezzo">
-								<article class="ArticlePrezzo">X.Y$</article>
-							</div>
-						</div>
-					<% } %>
-				</section>
-			</div>
-			
-			<div class=containerMax>
-				<div class=separator>&nbsp;<br>&nbsp;</div>
-				<div class=sezioneProdotti><label class=sezione><strong>Prodotti in Offerta</strong></label></div>
-				<section class="prodottiNuovi">	
-					<% for(int i=0; i<3; i++){ %>
-						<div class="product">
-							<h2 class="TitleProduct"><a href=DispatcherProdottoServlet>Nome Prodotto</a></h2><hr>
-							<img src="${pageContext.request.contextPath}/imageProdotto/1/1.jpg" class="ImageProduct">
-							<div class="DivPrezzo">
-								<article class="ArticlePrezzo">X.Y$</article>
-							</div>
-						</div>
-					<% } %>
-				</section>
-			</div>
- -->

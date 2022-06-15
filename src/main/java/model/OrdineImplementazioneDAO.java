@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 
@@ -200,6 +201,45 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 			    pr.setCodice(result.getShort("prodotto"));
 				primp.leggiSingoloProdotto(pr);
 			    array.put(gson.toJson(pr));
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public ArrayList<OrdineBean> leggiOrdineArraylist(UtenteBean utente) {
+		ArrayList<OrdineBean> array = new ArrayList<OrdineBean>();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Ordine WHERE utente ='" + utente.getEmail() + "'");
+
+			while (result.next()) {
+				OrdineBean ordine = new OrdineBean();
+				ordine.setId(result.getInt("idOrdine"));
+				ordine.setDataOrdine(result.getDate("dataOrdine"));
+				ordine.setDataConsegna(result.getDate("dataConsegna"));
+				ordine.setOrarioOrdine(result.getTime("orarioOrdine"));
+				ordine.setOrarioConsegna(result.getTime("orarioConsegna"));
+				ordine.setPrezzoProdotto(result.getDouble("prezzoProdotto"));
+			    ordine.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+			    ordine.setIvaProdotto(result.getInt("ivaProdotto"));
+			    ordine.setIndirizzo(result.getString("indirizzoSpedizione"));
+				ProdottoBean pr = new ProdottoBean();
+				ProdottoImplementazioneDAO primp = new ProdottoImplementazioneDAO();
+			    pr.setCodice(result.getShort("prodotto"));
+				primp.leggiSingoloProdotto(pr);
+				ordine.setProdotto(pr);
+				array.add(ordine);
 			}
 			result.close();
 			con.closeConnection();

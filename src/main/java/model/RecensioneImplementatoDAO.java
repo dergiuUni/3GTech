@@ -139,7 +139,6 @@ public class RecensioneImplementatoDAO implements RecensioneDAO {
 
 			while (result.next()) {
 				UtenteBean ut = new UtenteBean();
-				ut.setEmail(result.getString("utente"));
 				RecensioneBEAN p = new RecensioneBEAN(result.getInt("id"), result.getString("testo"), ut);
 				array.put(gson.toJson(p));
 			}

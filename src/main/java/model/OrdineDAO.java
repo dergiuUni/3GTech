@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
@@ -11,5 +12,6 @@ public interface OrdineDAO {
 	public boolean modificaOrarioConsegna (OrdineBean ordine);
 	public void    leggiSingoloOrdine     (OrdineBean ordine);
 	public JSONArray leggiOrdine   (UtenteBean utente);
+	public ArrayList<OrdineBean> leggiOrdineArraylist(UtenteBean utente);
 	public void    elencoFunzioni();
 }
