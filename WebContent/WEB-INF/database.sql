@@ -43,8 +43,8 @@ CREATE TABLE Ordine(
     indirizzoSpedizione  VARCHAR(30) NOT NULL,
     
     PRIMARY KEY (idOrdine),
-    FOREIGN KEY (utente)   REFERENCES Utente(email)    ON UPDATE CASCADE ON DELETE CASCADE,
-    FOREIGN KEY (prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (utente)   REFERENCES Utente(email)    ON UPDATE CASCADE,
+    FOREIGN KEY (prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE
 );
 
 CREATE TABLE Telefono(
