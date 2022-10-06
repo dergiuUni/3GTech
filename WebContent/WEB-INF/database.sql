@@ -29,6 +29,15 @@ CREATE TABLE Utente(
     PRIMARY KEY (email)
 );
 
+CREATE TABLE Carta(
+	scadenza 		DATE NOT NULL,
+	titolare		VARCHAR(30) NOT NULL
+	cvc				SMALLINT NOT NULL,
+	numero			CHAR(12) NOT NULL,
+	
+	PRIMARY KEY(numero)
+);
+
 CREATE TABLE Ordine(
 	idOrdine         INT AUTO_INCREMENT NOT NULL,
     dataOrdine       DATE NOT NULL,
@@ -41,10 +50,20 @@ CREATE TABLE Ordine(
     ivaProdotto      INT NOT NULL,
     utente           VARCHAR(30) NOT NULL,
     indirizzoSpedizione  VARCHAR(30) NOT NULL,
+    cartaUsata		 CHAR(12) NOT NULL,
     
     PRIMARY KEY (idOrdine),
+    FOREIGN KEY (cartaUsata) REFERENCES Carta(numero),
     FOREIGN KEY (utente)   REFERENCES Utente(email)    ON UPDATE CASCADE,
     FOREIGN KEY (prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE
+);
+
+CREATE TABLE Possiede(
+	emailUtente		VARCHAR(30) NOT NULL,
+	numeroCarta		CHAR(12) NOT NULL,
+	
+	FOREIGN KEY (emailUtente) REFERENCES Utente(email),
+	FOREIGN KEY (numeroCarta) REFERENCES Carta(numero)
 );
 
 CREATE TABLE Telefono(
