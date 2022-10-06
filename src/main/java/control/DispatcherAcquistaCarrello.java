@@ -75,15 +75,13 @@ public class DispatcherAcquistaCarrello extends HttpServlet {
 				utimp.leggiSingoloUtente(ut);
 				ordine.setUtente(ut);
 				ordine.setIndirizzo(ut.getIndirizzo()); 			
-				int id=orimp.inserisciOrdine(ordine);
-				ordine.setId(id);
+				/*int id=orimp.inserisciOrdine(ordine);
+				ordine.setId(id);*/
 				list.add(ordine);
-				System.out.println(pr.getCodice());
 			}
 		}
 		request.setAttribute("list", list);
-		carrello.eliminaTutto(request);
-		request.getRequestDispatcher("WEB-INF/fattura.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/pagamento.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

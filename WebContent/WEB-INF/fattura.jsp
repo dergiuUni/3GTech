@@ -25,7 +25,7 @@ table{
 <body>
 
 <%ArrayList<OrdineBean> list=(ArrayList)request.getAttribute("list");
-if(list.isEmpty() == true){
+	if(list.isEmpty() == true){
 %>
 	<h1>lista Vuota</h1>
 <%
