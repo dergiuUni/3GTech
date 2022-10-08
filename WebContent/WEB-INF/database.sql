@@ -6,7 +6,7 @@ DROP USER IF EXISTS 'c'@'localhost';
 CREATE USER 'UserAzienda2'@'localhost' IDENTIFIED BY 'user';
 GRANT ALL ON AZIENDA2.* TO 'UserAzienda2'@'localhost';
 
-CREATE TABLE Prodotto(
+CREATE TABLE Prodotto( 
     codice      SMALLINT AUTO_INCREMENT NOT NULL,
     nome        VARCHAR(100) NOT NULL,
     tipo        ENUM ('Videogame','Console','Computer','Elettrodomestici','Altro') NOT NULL DEFAULT 'Altro', 
@@ -18,7 +18,7 @@ CREATE TABLE Prodotto(
     PRIMARY KEY (codice)
 );
 
-CREATE TABLE Utente(
+CREATE TABLE Utente( 
     nome      VARCHAR(30) NOT NULL,
     cognome   VARCHAR(30) NOT NULL,
     email     VARCHAR(30) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE Utente(
     PRIMARY KEY (email)
 );
 
-CREATE TABLE Carta(
+CREATE TABLE Carta( 
 	scadenza 		DATE NOT NULL,
 	titolare		VARCHAR(30) NOT NULL
 	cvc				SMALLINT NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE Carta(
 	PRIMARY KEY(numero)
 );
 
-CREATE TABLE Ordine(
+CREATE TABLE Ordine( 
 	idOrdine         INT AUTO_INCREMENT NOT NULL,
     dataOrdine       DATE NOT NULL,
     dataConsegna     DATE ,
@@ -62,11 +62,11 @@ CREATE TABLE Possiede(
 	emailUtente		VARCHAR(30) NOT NULL,
 	numeroCarta		CHAR(12) NOT NULL,
 	
-	FOREIGN KEY (emailUtente) REFERENCES Utente(email),
+	FOREIGN KEY (emailUtente) REFERENCES Utente(email) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (numeroCarta) REFERENCES Carta(numero)
 );
 
-CREATE TABLE Telefono(
+CREATE TABLE Telefono( 
 	utente VARCHAR(30) NOT NULL,
     numero CHAR(10) NOT NULL,
 
@@ -74,7 +74,7 @@ CREATE TABLE Telefono(
     FOREIGN KEY (utente) REFERENCES Utente(email) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
-CREATE TABLE Recensione(
+CREATE TABLE Recensione( 
 	id       INT NOT NULL AUTO_INCREMENT,
 	testo    VARCHAR(100) NOT NULL,
     utente   VARCHAR(30) NOT NULL,

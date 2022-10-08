@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+
+import model.OrdineImplementazioneDAO;
 import model.ProdottoImplementazioneDAO;
 import model.UtenteBean;
 
@@ -25,8 +28,8 @@ public class OrdiniUtente extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean ut=new UtenteBean();
 		ut.setEmail((String)request.getParameter("perEmail"));
-		ProdottoImplementazioneDAO dao=new ProdottoImplementazioneDAO();
-		String elenco=dao.selectOrdiniUtente(ut);
+		OrdineImplementazioneDAO dao=new OrdineImplementazioneDAO();
+		JSONArray elenco=dao.selectOrdiniUtente(ut);
 		request.setAttribute("elenco", elenco);
 		request.getRequestDispatcher("/WEB-INF/elencoOrdiniADMIN.jsp").forward(request, response);
 	}

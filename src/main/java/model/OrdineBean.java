@@ -16,6 +16,7 @@ public class OrdineBean implements Serializable{
     private int ivaProdotto;
     private UtenteBean utente;
     private String indirizzo;
+    //modificare aggiunta carta
 	
 	public OrdineBean(int id, Date dataOrdine, Date dataConsegna, Time orarioOrdine, Time orarioConsegna, ProdottoBean prodotto, double prezzoProdotto, int quantitaProdotto, int ivaProdotto, String indirizzo, UtenteBean utente) {
 		this.id = id;

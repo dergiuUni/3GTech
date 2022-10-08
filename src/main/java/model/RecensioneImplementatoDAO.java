@@ -78,7 +78,7 @@ public class RecensioneImplementatoDAO implements RecensioneDAO {
 		try {
 			con.OpenConnection( username, password);
 			Statement st = con.getConnection().createStatement();
-			ResultSet result = st.executeQuery("SELECT ROUND(AVG(stelle)) FROM Recensione WHERE prodotto = " + recensione.getProdotto().getCodice());
+			ResultSet result = st.executeQuery("SELECT stelle FROM Recensione WHERE id = " + recensione.getId());
 			result.next();
 			
 			recensione.setStelle(result.getInt(1));
@@ -140,6 +140,7 @@ public class RecensioneImplementatoDAO implements RecensioneDAO {
 			while (result.next()) {
 				UtenteBean ut = new UtenteBean();
 				RecensioneBEAN p = new RecensioneBEAN(result.getInt("id"), result.getString("testo"), ut);
+				p.setStelle(result.getInt("stelle"));
 				array.put(gson.toJson(p));
 			}
 			result.close();
@@ -153,18 +154,4 @@ public class RecensioneImplementatoDAO implements RecensioneDAO {
 		return null;
 	}
 
-	/**
-	 * Elenco di tutte le funzioni di questa classe. 
-	 * <ul>
-	 * 		<li>aggiungiRecensione
-	 * 		<li>rimuoviRecensione
-	 * 		<li>leggiRecensione
-	 * 		<li>elencoFunzioni
-	 * </ul>
-	 * ATTENZIONE: Questo metodo non fa assolutamente nulla
-	 */
-	@Override
-	public void elencoFunzioni() {
-		
-	}
 }

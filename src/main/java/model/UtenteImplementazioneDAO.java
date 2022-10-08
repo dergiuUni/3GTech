@@ -290,7 +290,6 @@ public class UtenteImplementazioneDAO implements UtenteDAO{
 				utenteBean.setNome(result.getString("nome"));
 				utenteBean.setCognome(result.getString("cognome"));
 				utenteBean.setEmail(result.getString("email"));
-				utenteBean.setPassword(result.getString("password"));
 				utenteBean.setTipo(categoria.valueOf(result.getString("tipo")));
 				utenteBean.setIndirizzo(result.getString("indirizzo"));
 				result.close();

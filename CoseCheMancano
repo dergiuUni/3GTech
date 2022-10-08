@@ -1,0 +1,9 @@
+- elencoOrdiniADMIN.jsp (codice passato da stringa a jsonarray)
+- elencoOrdiniADMIN.jsp (codice passato da stringa a jsonarray) 
+- modificare sql che non ho capito gli audio
+- modificare il bean ordine con voce sopra
+- ho creato la funzione "cartaUtente" in possiedeIMplementazione se vogliamo far visualizzare tutte le carte di un singolo utente all'acquisto
+- funzioni "aggiuntacarta" "rimuovicarta" implementarle  jsp
+- funzione pagamento che serve a convalidare i dati inseriti nel momento del pagamento se sono identici alla carta inserita nel db implementarla nella jsp prima della visualizzazione delle fatture
+- copiare il css del carrello anche nelle prime 2 pagine elencate qua 
+- visualizzazione delle recensioni

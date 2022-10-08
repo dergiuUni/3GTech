@@ -10,5 +10,4 @@ public interface RecensioneDAO {
 	public boolean leggiStelle(RecensioneBEAN recensione);
 	public boolean lasciaStelle(RecensioneBEAN recensione);
 	public JSONArray leggiRecensione(ProdottoBean prodotto);
-	public void elencoFunzioni();
 }

@@ -8,5 +8,4 @@ public interface TelefonoDAO {
 	public boolean aggiungiTelefono(TelefonoBEAN telefono);
 	public boolean rimuoviTelefono(TelefonoBEAN telefono);
 	public JSONArray leggiTelefono(UtenteBean utente);
-	public void elencoFunzioni();
 }

@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+
+import model.OrdineImplementazioneDAO;
 import model.ProdottoImplementazioneDAO;
 
 @WebServlet("/OrdiniData")
@@ -23,8 +26,8 @@ public class OrdiniData extends HttpServlet {
 		String d1=(String)request.getParameter("perData1");
 		String d2=(String)request.getParameter("perData2");
 		Date data1=Date.valueOf(d1), data2=Date.valueOf(d2);
-		ProdottoImplementazioneDAO dao=new ProdottoImplementazioneDAO();
-		String elenco=dao.selectOrdiniData(data1,data2);
+		OrdineImplementazioneDAO dao=new OrdineImplementazioneDAO();
+		JSONArray elenco=dao.selectOrdiniData(data1,data2);
 		request.setAttribute("elenco", elenco);
 		request.getRequestDispatcher("/WEB-INF/elencoOrdiniADMIN.jsp").forward(request, response);
 	}

@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,5 +14,6 @@ public interface OrdineDAO {
 	public void    leggiSingoloOrdine     (OrdineBean ordine);
 	public JSONArray leggiOrdine   (UtenteBean utente);
 	public ArrayList<OrdineBean> leggiOrdineArraylist(UtenteBean utente);
-	public void    elencoFunzioni();
+	public JSONArray selectOrdiniUtente(UtenteBean utente);
+	public JSONArray selectOrdiniData(Date d1, Date d2);
 }

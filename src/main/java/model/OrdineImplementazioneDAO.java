@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 
 import com.google.gson.Gson;
+
+import model.ProdottoBean.categoria;
 
 public class OrdineImplementazioneDAO implements OrdineDAO{
 	private static String username = "UserAzienda2";
@@ -252,20 +255,71 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 		return null;
 	}
 	
-	/**
-	 * Elenco di tutte le funzioni di questa classe. 
-	 * <ul>
-	 * 		<li>inserisciOrdine
-	 * 		<li>modificaDataConsegna
-	 * 		<li>modificaOrarioConsegna 
-	 * 		<li>leggiSingoloOrdine: restituisce l'oggetto ordine passatogli con tutti i campi compilati
-	 * 		<li>leggiOrdine: resiturisce una lista contenente tutti gli ordini di un determinato utente 
-	 * 		<li>elencoFunzioni();
-	 * </ul>
-	 * ATTENZIONE: Questo metodo non fa assolutamente nulla
-	 */
-	@Override
-	public void elencoFunzioni() {
+	public JSONArray selectOrdiniUtente(UtenteBean utente) {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
 		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Ordine WHERE utente='"+utente.getEmail() + "'");
+
+			while (result.next()) {
+				OrdineBean ordine = new OrdineBean();
+				ordine.setId(result.getInt("idOrdine"));
+				ordine.setDataOrdine(result.getDate("dataOrdine"));
+				ordine.setDataConsegna(result.getDate("dataConsegna"));
+				ordine.setOrarioOrdine(result.getTime("orarioOrdine"));
+				ordine.setOrarioConsegna(result.getTime("orarioConsegna"));
+				ordine.setPrezzoProdotto(result.getDouble("prezzoProdotto"));
+			    ordine.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+			    ordine.setIvaProdotto(result.getInt("ivaProdotto"));
+			    ordine.setIndirizzo(result.getString("indirizzoSpedizione"));
+				array.put(gson.toJson(ordine));
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
+	}
+	
+	public JSONArray selectOrdiniData(Date d1, Date d2) {
+		JSONArray array = new JSONArray();
+		Gson gson = new Gson();
+		Connettore con = new Connettore();
+		
+		try {
+			con.OpenConnection(username, password);
+			Statement st = con.getConnection().createStatement();
+			ResultSet result = st.executeQuery("SELECT * FROM Ordine WHERE dataOrdine BETWEEN '"+d1+"' AND '"+d2+"'");
+
+			while (result.next()) {
+				OrdineBean ordine = new OrdineBean();
+				ordine.setId(result.getInt("idOrdine"));
+				ordine.setDataOrdine(result.getDate("dataOrdine"));
+				ordine.setDataConsegna(result.getDate("dataConsegna"));
+				ordine.setOrarioOrdine(result.getTime("orarioOrdine"));
+				ordine.setOrarioConsegna(result.getTime("orarioConsegna"));
+				ordine.setPrezzoProdotto(result.getDouble("prezzoProdotto"));
+			    ordine.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+			    ordine.setIvaProdotto(result.getInt("ivaProdotto"));
+			    ordine.setIndirizzo(result.getString("indirizzoSpedizione"));
+				array.put(gson.toJson(ordine));
+			}
+			result.close();
+			con.closeConnection();
+			return array;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.print("error dao implementazione");
+			System.out.print(e);
+		}
+		return null;
 	}
 }

@@ -93,19 +93,4 @@ public class TelefonoImplementatoDAO implements TelefonoDAO{
 		}
 		return null;
 	}
-	
-	/**
-	 * Elenco di tutte le funzioni di questa classe. 
-	 * <ul>
-	 * 		<li>aggiungiTelefono
-	 * 		<li>rimuoviTelefono
-	 *		<li>leggiTelefono
-	 *		<li>elencoFunzioni
-	 * </ul>
-	 * ATTENZIONE: Questo metodo non fa assolutamente nulla
-	 */
-	@Override
-	public void elencoFunzioni() {
-		
-	}
 }
