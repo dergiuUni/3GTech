@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.ProdottoBean" %>
+<%@ page import="bean.ProdottoBean" %>
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.JSONArray"%>
 <!DOCTYPE html>
@@ -112,7 +112,7 @@
 	<%String path2="/3GTech/imageProdotto/"+p.getCodice()+"/2.jpg";%>
 	<%String path3="/3GTech/imageProdotto/"+p.getCodice()+"/3.jpg";%>
 	<%String path4="/3GTech/imageProdotto/"+p.getCodice()+"/4.jpg";%>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
 	<script type="text/javascript">
 		$(document).on("click", "#addCarrello", function() { 
             $.get("AjaxAggiungiAlCarrelloServlet?prodotto=" + <%=p.getCodice()%>, function(responseText) { 

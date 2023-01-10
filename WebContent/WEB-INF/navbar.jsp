@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Session" %>
+<%@ page import="sessione.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +11,11 @@
 <body>
 	<div class=menuDiv>
 		<nav><ul>
-			<li><a href="ComputerServlet">Computer</a></li>
-	    	<li><a href="ConsoleServlet">Console</a></li>
-	    	<li><a href="VideogameServlet">Videogames</a></li>
-	    	<li><a href="ElettrodomesticiServlet">Elettrodomestici</a></li>
-	    	<li><a href="AltroServlet">Altro</a></li>
+			<li><a href="DispatcherIndexComputerServlet">Computer</a></li>
+	    	<li><a href="DispatcherIndexConsoleServlet">Console</a></li>
+	    	<li><a href="DispatcherIndexVideogameServlet">Videogames</a></li>
+	    	<li><a href="DispatcherIndexElettrodomesticiServlet">Elettrodomestici</a></li>
+	    	<li><a href="DispatcherIndexAltroServlet">Altro</a></li>
 		</ul></nav>
 		</div>
 </body>

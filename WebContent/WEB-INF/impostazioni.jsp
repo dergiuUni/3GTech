@@ -6,7 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Impostazioni</title>
 <link rel=stylesheet href="${pageContext.request.contextPath}/impostazioni/impostazioni.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
 </head>
 <body>
 	<div class=page>

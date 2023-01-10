@@ -4,13 +4,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	
 		<meta charset="ISO-8859-1">
 		<title>HomePage</title>
 		<link rel=stylesheet href="${pageContext.request.contextPath}/index/index.css">
 		<%@page import="java.util.ArrayList" %>
 		<%@page import="java.util.Iterator" %>
-		<%@page import="model.ProdottoBean" %>
+		<%@page import="bean.ProdottoBean" %>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	

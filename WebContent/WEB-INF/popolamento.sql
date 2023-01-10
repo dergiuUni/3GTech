@@ -74,35 +74,45 @@ INSERT INTO Utente(nome, cognome, email, password, tipo, indirizzo) VALUES
     ("Lucia","Caccianemico","l.caccianemico@USER.IT","Q2FjY2lhbmVtaWNv",  "user", "Via ACaso 10"),
     ("Ennio","Dovara","e.dovara@USER.IT","RG92YXJh",  "user", "Via ACaso 10");
 
-INSERT INTO Ordine(dataOrdine, dataConsegna, orarioOrdine, orarioConsegna, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione) VALUES
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "c.scarletti@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "b.soranzo@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "r.sansoni@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "n.mastroianni@USER.IT",  "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "g.pennetta@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "e.montanari@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "l.trupiano@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "p.gibilisco@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "m.giulietti@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "g.sorrentino@USER.IT",   "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "p.pignatti@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "i.schiavone@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "r.celentano@USER.IT",    "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "a.cesaroni@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "m.ortolani@USER.IT",     "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "a.grisoni@USER.IT",      "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "l.caccianemico@USER.IT", "caduti in guerra"),
-    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "e.dovara@USER.IT",       "caduti in guerra");
+INSERT INTO Carta(scadenza, titolare, cvc, numero) VALUES
+	('2023-10-25', "Giovanni Cascone", 123, "3475682452"),
+	('2023-10-25', "Gioacchino Tortorelli", 123, "3475682451"),
+	('2023-10-25', "Giuseppe De Rosa", 123, "3475682450");
+	
+INSERT INTO Ordine(dataOrdine, dataConsegna, orarioOrdine, orarioConsegna, prodotto, prezzoProdotto, quantitaProdotto, ivaProdotto, utente, indirizzoSpedizione, cartaUsata) VALUES
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.TORTORELLI@USER.IT",   "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.CASCONE@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "G.DEROSA80@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "c.scarletti@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "b.soranzo@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "r.sansoni@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "n.mastroianni@USER.IT",  "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "g.pennetta@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "e.montanari@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "l.trupiano@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "p.gibilisco@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "m.giulietti@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "g.sorrentino@USER.IT",   "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "p.pignatti@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "i.schiavone@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "r.celentano@USER.IT",    "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "a.cesaroni@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "m.ortolani@USER.IT",     "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "a.grisoni@USER.IT",      "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "l.caccianemico@USER.IT", "caduti in guerra", "3475682450"),
+    ('2021-03-24', '2021-03-27', '13:23', '18:45', 2, 18.23, 1, 10, "e.dovara@USER.IT",       "caduti in guerra", "3475682450");
 
+INSERT INTO Possiede(emailUtente, numeroCarta) VALUES
+	("G.DEROSA80@USER.IT", "3475682450"),
+	("G.CASCONE@USER.IT", "3475682452"),
+	("G.TORTORELLI@USER.IT", "3475682451");
+    
 INSERT INTO Telefono(utente, numero) VALUES
     ("G.TORTORELLI@ADMIN.IT","3541777020"),
     ("G.CASCONE@ADMIN.IT","0987160808"),

@@ -30,16 +30,16 @@ CREATE TABLE Utente(
 );
 
 CREATE TABLE Carta( 
-	scadenza 		DATE NOT NULL,
-	titolare		VARCHAR(30) NOT NULL
-	cvc				SMALLINT NOT NULL,
-	numero			CHAR(12) NOT NULL,
+	scadenza DATE NOT NULL,
+	titolare VARCHAR(30) NOT NULL,
+	cvc SMALLINT NOT NULL,
+	numero CHAR(12) NOT NULL,
 	
 	PRIMARY KEY(numero)
 );
 
 CREATE TABLE Ordine( 
-	idOrdine         INT AUTO_INCREMENT NOT NULL,
+	idOrdine         INT AUTO_INCREMENT NOT NULL UNIQUE,
     dataOrdine       DATE NOT NULL,
     dataConsegna     DATE ,
 	orarioOrdine     TIME NOT NULL,
@@ -53,17 +53,19 @@ CREATE TABLE Ordine(
     cartaUsata		 CHAR(12) NOT NULL,
     
     PRIMARY KEY (idOrdine),
-    FOREIGN KEY (cartaUsata) REFERENCES Carta(numero),
-    FOREIGN KEY (utente)   REFERENCES Utente(email)    ON UPDATE CASCADE,
-    FOREIGN KEY (prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE
+    
+    FOREIGN KEY (utente)   REFERENCES Utente(email) ON UPDATE CASCADE,
+    FOREIGN KEY (prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE,
+    FOREIGN KEY (cartaUsata) REFERENCES Carta(numero) ON UPDATE CASCADE
 );
 
 CREATE TABLE Possiede(
-	emailUtente		VARCHAR(30) NOT NULL,
-	numeroCarta		CHAR(12) NOT NULL,
+	emailUtente VARCHAR(30) NOT NULL,
+	numeroCarta CHAR(12) NOT NULL,
 	
+	PRIMARY KEY(numeroCarta),
 	FOREIGN KEY (emailUtente) REFERENCES Utente(email) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (numeroCarta) REFERENCES Carta(numero)
+	FOREIGN KEY (numeroCarta) REFERENCES Carta(numero) ON UPDATE CASCADE
 );
 
 CREATE TABLE Telefono( 
@@ -85,7 +87,3 @@ CREATE TABLE Recensione(
     FOREIGN KEY (utente)   REFERENCES Utente(email)    ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Prodotto) REFERENCES Prodotto(codice) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
-/* - modificare ordine dao
-    - size nome prodotto
-    */
