@@ -42,10 +42,11 @@ public class RegistrazioneServlet extends HttpServlet {
 		tel.setNumero(telefono);
 		tel.setUtente(user);
 		
-		op.inserisciUtente(user);
-		telimp.aggiungiTelefono(tel);
+		boolean b=op.inserisciUtente(user);
 		
-		request.getRequestDispatcher("/DispatcherLoginServlet").forward(request, response);
+		if(b)
+			request.getRequestDispatcher("/DispatcherLoginServlet").forward(request, response);
+		else request.getRequestDispatcher("/DispatcherLoginServletError").forward(request, response);
 	}
 
 }

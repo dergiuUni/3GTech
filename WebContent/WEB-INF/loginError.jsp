@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/login/LoginCSS.css">
-        <title>Login</title>
+        <title>LoginErrore</title>
     </head>
 	
     <body>
@@ -17,6 +17,7 @@
             </form>
             <p id=error></p>
         </div>
+        <p id=error style="color:red; text-align:center">ERRORE: Inserisci correttamente i dati</p>
      </div>
      
      <script src="${pageContext.request.contextPath}/login/login.js"></script>
