@@ -9,6 +9,36 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.js"></script>
 </head>
 <body>
+<script>
+
+
+function validateEmail(){
+	var email=document.getElementById("newEmail");
+	var errore=document.getElementById("errorEmail");
+	
+	
+	if(email.value.length> 30){
+		css(errore);
+		errore.innerHTML="<b>ERRORE:</b>Email troppo lunga!";
+		return false;
+	}
+	
+	if(email.value==""){
+		css(errore);
+		errore.innerHTML="<b>ERRORE:</b>Inserisci email!";
+		console.log("errore");
+		return false;
+	}
+	
+	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)(\.\w{2,9})+$/.test(email.value)==false){
+	   css(errore);
+	   errore.innerHTML="<b>ERRORE:</b>Inserire una email valida!";
+	   console.log("errore");
+	   return false;
+    }
+    return true;
+}
+</script>
 	<div class=page>
     	<div class="logo"><a href="index"><img src="${pageContext.request.contextPath}/images/newLogo.png" alt=logo width=110px></a></div>
         <div class="scelta">

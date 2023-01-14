@@ -19,24 +19,6 @@ $(function(){
 		});
 })
 
-function validateEmail(){
-	var email=document.getElementById("newEmail");
-	var errore=document.getElementById("errorEmail")
-	
-	if(email.value==""){
-		css(errore);
-		errore.innerHTML="<b>ERRORE:</b>Inserisci email!";
-		return false;
-	}
-	
-	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)(\.\w{2,9})+$/.test(email.value)==false){
-	   css(errore);
-	   errore.innerHTML="<b>ERRORE:</b>Inserire una email valida!";
-	   return false;
-    }
-    return true;
-}
-
 function validatePassword(){
 	var password=document.getElementById("newPassword");
 	var errore=document.getElementById("errorPassword");
