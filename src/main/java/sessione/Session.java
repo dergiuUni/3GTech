@@ -12,11 +12,11 @@ public class Session {
 	public Session() {}
 	
 	public String getUtenteSessionLogin(HttpServletRequest request) {
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			return null;
 		}
 		else {
-			return (String)request.getSession().getAttribute("utente");
+			return (String)request.getSession(false).getAttribute("utente");
 		}
 	}
 	
@@ -25,18 +25,16 @@ public class Session {
 		
 		destroySession(request);
 		
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			request.getSession().setMaxInactiveInterval(60*60);
 			if(ut.isAdmin(utente)) {
 				request.getSession(true).setAttribute("utente", "ADMIN");
-				//non stava nulla
 				request.getSession().setAttribute("email", utente.getEmail());
 				return true;
 			}
 			else {
 				if(ut.isCliente(utente)) {
 					request.getSession(true).setAttribute("utente", "CLIENTE");
-					//non stava nulla
 					request.getSession().setAttribute("email", utente.getEmail());
 					return true;
 				}
@@ -50,11 +48,11 @@ public class Session {
 	}
 	
 	public boolean isSessionAdmin(HttpServletRequest request) {
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			return false;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "ADMIN") {
+			if (request.getSession(false).getAttribute("utente") == "ADMIN") {
 				return true;
 			}
 			else {
@@ -64,11 +62,11 @@ public class Session {
 	}
 	
 	public boolean isSessionCliente(HttpServletRequest request) {
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			return false;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "CLIENTE") {
+			if (request.getSession(false).getAttribute("utente") == "CLIENTE") {
 				return true;
 			}
 			else {
@@ -78,11 +76,11 @@ public class Session {
 	}
 	
 	public boolean isSessionOspite(HttpServletRequest request) {
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			return false;
 		}
 		else {
-			if (request.getSession().getAttribute("utente") == "OSPITE") {
+			if (request.getSession(false).getAttribute("utente") == "OSPITE") {
 				return true;
 			}
 			else {
@@ -93,7 +91,6 @@ public class Session {
 	
 	public boolean azzeraCarrello(HttpServletRequest request) {
 		if(isSessionCliente(request) == true) {
-			//non stava nulla ma dovrebbe essere false
 			request.getSession().removeAttribute("carrello");
 			return true;
 		}
@@ -103,8 +100,7 @@ public class Session {
 	public boolean inserisciCarrello(HttpServletRequest request, String carrello) {
 		azzeraCarrello(request);
 		if(isSessionCliente(request) == true) {
-			//qua stava true non so se e sbagliato o meno controllo
-			request.getSession().setAttribute("carrello", carrello);
+			request.getSession(true).setAttribute("carrello", carrello);
 			return true;
 		}
 		return false;
@@ -112,28 +108,28 @@ public class Session {
 	
 	public String leggiCarrello(HttpServletRequest request) {
 		if(isSessionCliente(request) == true) {
-			return (String) request.getSession().getAttribute("carrello");
+			return (String) request.getSession(false).getAttribute("carrello");
 		}
 		return null;
 	}
 	
 	public boolean isInizializzatoCarrello(HttpServletRequest request) {
- 		if((String)request.getSession().getAttribute("carrello") != null) {
+		if((String)request.getSession(false).getAttribute("carrello") != null) {
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean destroySession(HttpServletRequest request) {
-		if(request.getSession().getAttribute("utente")!=null) {
-			request.getSession().removeAttribute("carrello");
-			request.getSession().removeAttribute("utente");
-			request.getSession().removeAttribute("email");
+		if(request.getSession(false).getAttribute("utente")!=null) {
+			request.getSession(false).removeAttribute("carrello");
+			request.getSession(false).removeAttribute("utente");
+			request.getSession(false).removeAttribute("email");
 		}
 		
-		request.getSession().invalidate();
+		request.getSession(false).invalidate();
 		
-		if(request.getSession() == null) {
+		if(request.getSession(false) == null) {
 			return true;
 		}
 		else {
@@ -142,6 +138,6 @@ public class Session {
 	}
 	
 	public String getEmail(HttpServletRequest request) {
-		return (String)request.getSession().getAttribute("email");
+		return (String)request.getSession(false).getAttribute("email");
 	}
 }
