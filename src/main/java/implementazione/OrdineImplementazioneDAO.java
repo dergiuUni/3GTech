@@ -268,6 +268,9 @@ public class OrdineImplementazioneDAO implements OrdineDAO{
 		Gson gson = new Gson();
 		Connettore con = new Connettore();
 		
+		if(d1.toString() == null || d2.toString() == null || d1.toString() == "" || d2.toString() == "") {
+			return array;
+		}
 		try {
 			con.OpenConnection(username, password);
 			Statement st = con.getConnection().createStatement();

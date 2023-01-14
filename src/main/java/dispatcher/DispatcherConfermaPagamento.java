@@ -59,34 +59,36 @@ public class DispatcherConfermaPagamento extends HttpServlet {
 			if(crimp.exists(cr) == false) {
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("WEB-INF/fattura2.jsp").forward(request, response);
-				return;
 			}
-			
-			for(int i = 0; i < arr.length(); i++) {
-				OrdineBean ordine = new OrdineBean();
-				JSONObject ob = new JSONObject(arr.getString(i));
-				pr = new Gson().fromJson(ob.toString(), ProdottoBean.class);
-				LocalDate now = LocalDate.now();  
-				LocalTime tim = LocalTime.now();
-				
-				
-				ordine.setDataOrdine(Date.valueOf(now.getYear() + "-" + now.get(ChronoField.MONTH_OF_YEAR) + "-" + now.get(ChronoField.DAY_OF_MONTH)));
-				ordine.setOrarioOrdine(Time.valueOf(tim));
-				ordine.setProdotto(pr);
-				ordine.setPrezzoProdotto(pr.getPrezzo());
-				ordine.setQuantitaProdotto(pr.getQuantitaCarrello());
-				ordine.setIvaProdotto(10); 
-				ut.setEmail(session.getEmail(request));
-				utimp.leggiSingoloUtente(ut);
-				ordine.setUtente(ut);
-				ordine.setIndirizzo(ut.getIndirizzo()); 
-				ordine.setCarta(cr);
-				ordine.setId(orimp.inserisciOrdine(ordine));
-				list.put(gson.toJson(ordine));
+			if(crimp.pagamento(cr) == true) {
+				for(int i = 0; i < arr.length(); i++) {
+					OrdineBean ordine = new OrdineBean();
+					JSONObject ob = new JSONObject(arr.getString(i));
+					pr = new Gson().fromJson(ob.toString(), ProdottoBean.class);
+					LocalDate now = LocalDate.now();  
+					LocalTime tim = LocalTime.now();
+					
+					
+					ordine.setDataOrdine(Date.valueOf(now.getYear() + "-" + now.get(ChronoField.MONTH_OF_YEAR) + "-" + now.get(ChronoField.DAY_OF_MONTH)));
+					ordine.setOrarioOrdine(Time.valueOf(tim));
+					ordine.setProdotto(pr);
+					ordine.setPrezzoProdotto(pr.getPrezzo());
+					ordine.setQuantitaProdotto(pr.getQuantitaCarrello());
+					ordine.setIvaProdotto(10); 
+					ut.setEmail(session.getEmail(request));
+					utimp.leggiSingoloUtente(ut);
+					ordine.setUtente(ut);
+					ordine.setIndirizzo(ut.getIndirizzo()); 
+					ordine.setCarta(cr);
+					ordine.setId(orimp.inserisciOrdine(ordine));
+					list.put(gson.toJson(ordine));
+				}
 			}
-		}
-		session.azzeraCarrello(request);
-		request.setAttribute("list", list);
+			session.azzeraCarrello(request);
+			request.setAttribute("list", list);
+			request.getRequestDispatcher("WEB-INF/fattura2.jsp").forward(request, response);
+		 }
+		 request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/fattura2.jsp").forward(request, response);
 		
 	}

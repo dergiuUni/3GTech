@@ -76,7 +76,7 @@ public class CartaImplementazioneDAO implements CartaDAO {
 				// TODO Auto-generated catch block
 				System.out.print("error dao implementazione");
 			}
-			if(c.getTitolare() == carta.getTitolare() && c.getScadenza() == carta.getScadenza() && c.getNumero() == carta.getNumero() && c.getCvc() == carta.getCvc()) {
+			if((c.getTitolare().compareTo(carta.getTitolare()) == 0)  && c.getScadenza().compareTo(carta.getScadenza()) == 0  && c.getNumero().compareTo(carta.getNumero()) == 0 && c.getCvc() == carta.getCvc()) {
 				return true;
 			}
 		}
