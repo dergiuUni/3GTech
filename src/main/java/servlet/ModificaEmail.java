@@ -20,11 +20,15 @@ public class ModificaEmail extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean ut=new UtenteBean();
-		String email=(String)request.getSession().getAttribute("email");
+		String email=(String)request.getSession().getAttribute("email");		
 		ut.setEmail(email);
 		ut.setIndirizzo((String)request.getParameter("newEmail")); //Uso il campo EMAIL del bean per salvare la nuova password
 		UtenteImplementazioneDAO dao=new UtenteImplementazioneDAO();
-		dao.modificaEmail(ut);
-		request.getRequestDispatcher("/DispatcherImpostazioni").forward(request, response);
+		
+		if(dao.modificaEmail(ut)) 
+			request.getRequestDispatcher("/DispatcherImpostazioni").forward(request, response);
+		else
+			request.getRequestDispatcher("/DispatcherImpostazioniErrore").forward(request, response);
+		
 	}
 }
