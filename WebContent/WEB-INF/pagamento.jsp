@@ -11,7 +11,7 @@
 	<div class=page>
         <div class="login-page">
         	<form action="DispatcherConfermaPagamento" method="post">
-        		<h2>Inserisci dati della carta</h2>
+        		<h2>Inserisci i dati della carta</h2>
             	<input class=form-input id=email name=email type=text placeholder="Nome titolare della carta" autofocus/>
                 <input class=form-input id=numero name=numero type="password" placeholder="Numero della carta"/>
                 <input class=form-input id=scadenza name=scadenza type=text placeholder="Scadenza" autofocus/>
