@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Pagamento</title>
 <meta charset="ISO-8859-1">
 <head>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/login/LoginCSS.css">
@@ -16,7 +17,7 @@
                 <input class=form-input id=numero name=numero type="password" placeholder="Numero della carta" required  pattern=".{10}" type=number/>
                 <input class=form-input id=scadenza name=scadenza type=text placeholder="Scadenza" autofocus required/>
                 <input class=form-input id=cvc name=cvc type=text placeholder="CVC" autofocus pattern=".{3}" required type=number/>
-                <input class=submit type=submit value=CONFERMA>
+                <input class=submit type=submit value="CONFERMA">
             </form>
             <p id=error></p>
         </div>
