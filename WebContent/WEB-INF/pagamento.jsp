@@ -12,11 +12,11 @@
         <div class="login-page">
         	<form action="index" method="post">
         		<h2>Inserisci i dati della carta</h2>
-            	<input class=form-input id=email name=email type=text placeholder="Nome titolare della carta" autofocus/>
-                <input class=form-input id=numero name=numero type="password" placeholder="Numero della carta"/>
-                <input class=form-input id=scadenza name=scadenza type=text placeholder="Scadenza" autofocus/>
-                <input class=form-input id=cvc name=cvc type=text placeholder="CVC" autofocus/>
-                <input class=submit type=submit value=CONFERMA>
+            	<input class=form-input id=email name=email type=text placeholder="Nome titolare della carta" maxlength="30" required autofocus/>
+                <input class=form-input id=numero name=numero type="password" placeholder="Numero della carta" required  pattern=".{10}" type=number/>
+                <input class=form-input id=scadenza name=scadenza type=text placeholder="Scadenza" autofocus required/>
+                <input class=form-input id=cvc name=cvc type=text placeholder="CVC" autofocus pattern=".{3}" required type=number/>
+                <input class=submit type=submit value=CONFERMA>
             </form>
             <p id=error></p>
         </div>
